@@ -665,15 +665,15 @@ button:hover {
                 <div id="column-profesiones">
                     <h4>PROFESSIONS (Drag the image)</h4>
                     
-                    <div class="drag-item" data-match="agricultor">
+                    <div class="drag-item" data-match="agricultor" draggable="true">
                         <div class="drag-item-image">Farmer</div>
                     </div>
 
-                    <div class="drag-item" data-match="piloto">
+                    <div class="drag-item" data-match="piloto" draggable="true">
                         <div class="drag-item-image">Pilot</div>
                     </div>
 
-                    <div class="drag-item" data-match="operador">
+                    <div class="drag-item" data-match="operador" draggable="true">
                         <div class="drag-item-image">Elec. Operator</div>
                     </div>
 
@@ -848,4 +848,248 @@ answerBtns.forEach(button => {
             feedbackText.textContent = '✅ Correct Answer! Keep Reading!';
             cmeDataCapsule.style.display = 'block'; 
         } else {
-            e.currentTarget.classList.add('incorrect-a
+            e.currentTarget.classList.add('incorrect-answer');
+            feedbackText.style.color = 'var(--color-accent)';
+            feedbackText.textContent = '❌ Incorrect. Read Lumi\'s explanation again to find the answer!';
+        }
+        feedbackText.style.display = 'block';
+        
+        // Disable all buttons after one answer
+        answerBtns.forEach(btn => btn.disabled = true);
+    });
+});
+
+
+// 3. DRAG & DROP LOGIC (Mischief Section)
+const dragItems = document.querySelectorAll('.drag-item');
+const dropTargets = document.querySelectorAll('.drop-target');
+const gameMessage = document.getElementById('game-message');
+
+let matchesFound = 0;
+const totalMatches = 3; // Farmer, Pilot, Operator
+
+dragItems.forEach(item => {
+    item.addEventListener('dragstart', dragStart);
+});
+
+dropTargets.forEach(target => {
+    target.addEventListener('dragenter', dragEnter);
+    target.addEventListener('dragover', dragOver);
+    target.addEventListener('dragleave', dragLeave);
+    target.addEventListener('drop', drop);
+});
+
+function dragStart(e) {
+    e.dataTransfer.setData('text/plain', e.target.getAttribute('data-match'));
+    e.target.classList.add('dragging');
+}
+
+function dragEnter(e) {
+    e.preventDefault();
+    if (!e.target.classList.contains('matched')) {
+        e.target.classList.add('hovered');
+    }
+}
+
+function dragOver(e) {
+    e.preventDefault();
+}
+
+function dragLeave(e) {
+    e.target.classList.remove('hovered');
+}
+
+function drop(e) {
+    e.preventDefault();
+    e.target.classList.remove('hovered');
+    
+    const draggedMatch = e.dataTransfer.getData('text/plain');
+    const dropTarget = e.target.closest('.drop-target');
+
+    if (dropTarget && dropTarget.getAttribute('data-target') === draggedMatch) {
+        // Match found!
+        dropTarget.classList.add('matched');
+        dropTarget.textContent = 'MATCHED!';
+
+        document.querySelector(`.drag-item[data-match="${draggedMatch}"]`).classList.add('matched');
+
+        matchesFound++;
+        if (matchesFound === totalMatches) {
+            gameMessage.style.display = 'block';
+        }
+    }
+}
+
+
+// 4. MEMORY GAME LOGIC (Protection Section)
+const memoryGameContainer = document.getElementById('memory-game');
+const memoryMessage = document.getElementById('memory-message');
+
+const cardsArray = [
+    { name: 'protection', content: 'Power Grid Isolation' },
+    { name: 'protection', content: 'Turn off vulnerable equipment' },
+    { name: 'prevention', content: 'Space Weather Forecasting' },
+    { name: 'prevention', content: 'Use of Shielded Satellites' },
+    { name: 'prevention', content: 'Space Weather Forecasting' },
+    { name: 'protection', content: 'Power Grid Isolation' },
+    { name: 'protection', content: 'Turn off vulnerable equipment' },
+    { name: 'prevention', content: 'Use of Shielded Satellites' }
+];
+
+let selectedCards = [];
+let matchedPairs = 0;
+
+function shuffle(array) {
+    array.sort(() => 0.5 - Math.random());
+}
+
+function createBoard() {
+    shuffle(cardsArray);
+    cardsArray.forEach((item, index) => {
+        const container = document.createElement('div');
+        container.classList.add('memory-card-container');
+
+        const card = document.createElement('div');
+        card.classList.add('memory-card');
+        card.dataset.name = item.name;
+        card.dataset.id = index;
+        card.addEventListener('click', flipCard);
+
+        const cardBack = document.createElement('div');
+        cardBack.classList.add('card-face', 'card-back');
+        cardBack.textContent = '🛡️ Protection';
+
+        const cardFront = document.createElement('div');
+        cardFront.classList.add('card-face', 'card-front');
+        cardFront.textContent = item.content;
+
+        card.appendChild(cardBack);
+        card.appendChild(cardFront);
+        container.appendChild(card);
+        memoryGameContainer.appendChild(container);
+    });
+}
+
+function flipCard() {
+    // Prevent double-clicking the same card or clicking a matched card
+    if (this.classList.contains('flipped') || this.classList.contains('matched') || selectedCards.length === 2) return;
+
+    this.classList.add('flipped');
+    selectedCards.push(this);
+
+    if (selectedCards.length === 2) {
+        setTimeout(checkForMatch, 1000);
+    }
+}
+
+function checkForMatch() {
+    const [cardOne, cardTwo] = selectedCards;
+
+    if (cardOne.dataset.content === cardTwo.dataset.content || cardOne.dataset.name === cardTwo.dataset.name && cardOne.dataset.id !== cardTwo.dataset.id) {
+        // Success: Match Found!
+        cardOne.classList.add('matched');
+        cardTwo.classList.add('matched');
+        matchedPairs++;
+
+        if (matchedPairs === cardsArray.length / 2) {
+            memoryMessage.style.display = 'block';
+        }
+    } else {
+        // Failure: No match. Flip back.
+        cardOne.classList.remove('flipped');
+        cardTwo.classList.remove('flipped');
+    }
+
+    selectedCards = [];
+}
+
+
+// Logic to initialize the memory game only once when the page is loaded
+if (memoryGameContainer) {
+    // Before creating the board, we need to ensure unique content to be able to match the cards by content or name
+    const uniqueCardsArray = [
+        { name: 'grid', content: 'Power Grid Isolation' },
+        { name: 'equipment', content: 'Turn off vulnerable equipment' },
+        { name: 'forecast', content: 'Space Weather Forecasting' },
+        { name: 'shield', content: 'Use of Shielded Satellites' }
+    ];
+    const gameCards = [...uniqueCardsArray, ...uniqueCardsArray].map((card, index) => ({
+        ...card,
+        id: index,
+        matchId: card.name
+    }));
+
+    function createNewBoard() {
+        memoryGameContainer.innerHTML = '';
+        selectedCards = [];
+        matchedPairs = 0;
+        memoryMessage.style.display = 'none';
+
+        shuffle(gameCards);
+        
+        gameCards.forEach(item => {
+            const container = document.createElement('div');
+            container.classList.add('memory-card-container');
+
+            const card = document.createElement('div');
+            card.classList.add('memory-card');
+            card.dataset.match = item.matchId; // Key for matching
+            card.addEventListener('click', flipCardMemory);
+
+            const cardBack = document.createElement('div');
+            cardBack.classList.add('card-face', 'card-back');
+            cardBack.textContent = '🛡️ Protection';
+
+            const cardFront = document.createElement('div');
+            cardFront.classList.add('card-face', 'card-front');
+            cardFront.textContent = item.content;
+
+            card.appendChild(cardBack);
+            card.appendChild(cardFront);
+            container.appendChild(card);
+            memoryGameContainer.appendChild(container);
+        });
+    }
+
+    createNewBoard();
+
+
+    function flipCardMemory() {
+        // Prevent double-clicking the same card or clicking a matched card
+        if (this.classList.contains('flipped') || this.classList.contains('matched') || selectedCards.length === 2) return;
+
+        this.classList.add('flipped');
+        selectedCards.push(this);
+
+        if (selectedCards.length === 2) {
+            setTimeout(checkForMatchMemory, 1000);
+        }
+    }
+
+
+    function checkForMatchMemory() {
+        const [cardOne, cardTwo] = selectedCards;
+
+        // Check if the match attributes are the same
+        if (cardOne.dataset.match === cardTwo.dataset.match) {
+            // Success: Match Found!
+            cardOne.classList.add('matched');
+            cardTwo.classList.add('matched');
+            matchedPairs++;
+
+            if (matchedPairs === 4) { // 4 unique pairs
+                memoryMessage.style.display = 'block';
+            }
+        } else {
+            // Failure: No match. Flip back.
+            cardOne.classList.remove('flipped');
+            cardTwo.classList.remove('flipped');
+        }
+
+        selectedCards = [];
+    }
+
+}
+</script>
+</body>
+</html>
