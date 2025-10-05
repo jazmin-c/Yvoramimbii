@@ -3,298 +3,849 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lumi’s Visit - Interactive Story</title>
+<title>Lumi's Visit - Pro Interactive Story</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
+/* ---------------------------------------------------- */
+/* 1. VARIABLES AND STYLE RESET */
+/* ---------------------------------------------------- */
 :root {
-    --color-primary: #ce1eff;
-    --color-secondary: #ffffff;
-    --color-accent: #FF69B4;
-    --color-text-light: #6f8cb8;
-    --color-text-dark: #230438;
-    --color-bg-dark: #12041D;
-    --color-highlight: #c5f361;
-    --content-max-width: 900px; 
+    --color-primary: #ce1eff; /* Bright Purple */
+    --color-secondary: #ffffff; /* White */
+    --color-accent: #FF69B4; /* Vibrant Pink (Buttons/Interaction) */
+    --color-text-light: #6f8cb8;
+    --color-text-dark: #230438;
+    --color-bg-dark: #12041D;
+    --color-highlight: #c5f361; /* Neon Green for titles */
+    --content-max-width: 900px; 
 }
 
 body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--color-secondary);
-    padding: 0;
-    background-color: var(--color-bg-dark);
-    min-height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-secondary);
+    padding: 0;
+    background-color: var(--color-bg-dark);
+    min-height: 100vh;
 }
 
+/* ---------------------------------------------------- */
+/* 2. DYNAMIC BACKGROUND (Space Gradient and Section Backgrounds) */
+/* ---------------------------------------------------- */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    background: linear-gradient(-45deg, #12041D, #230438, #52009e, #8f00ff);
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(-45deg, #12041D, #230438, #52009e, #8f00ff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
 }
 
 @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 main {
-    max-width: var(--content-max-width); 
-    margin: 0 auto; 
-    padding: 0 10px;
-    position: relative;
-    z-index: 10;
+    max-width: var(--content-max-width); 
+    margin: 0 auto; 
+    padding: 0 10px;
+    position: relative;
+    z-index: 10;
 }
 
 section {
-    padding: 40px 0;
-    margin-bottom: 0; 
-    min-height: 100vh; 
-    display: none; 
-    position: relative;
-    z-index: 1;
-    background-color: transparent;
+    padding: 40px 0;
+    margin-bottom: 0; 
+    min-height: 100vh; 
+    display: none; 
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
 }
 
+/* KEY: Pseudo-element for FULL SCREEN BACKGROUND */
 section::before {
-    content: '';
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; 
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-    background-color: rgba(0, 0, 0, 0.65);
+    content: '';
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.65);
 }
 
 section.active {
-    display: block;
+    display: block;
 }
 
 section.active::before {
-    opacity: 1;
+    opacity: 1;
 }
 
+
+/* SPECIFIC BACKGROUNDS PER SECTION */
 #bienvenida::before { background-image: url('Lumi.png'); background-position: top center; }
 #viaje::before { background-image: url('lumiytierra.png'); }
 #auroras::before { background-image: url('auroras.png'); }
-#travesuras::before { background-image: url('SPACE.jpg'); } 
+#travesuras::before { background-image: url('SPACE.jpg'); } 
 #nasa::before { background-image: url('cientificos.png'); }
 #cuidado::before { background-image: url('cientificos.png'); }
 #conclusion::before { background-image: url('Lumi.png'); }
 
+/* ---------------------------------------------------- */
+/* 3. TYPOGRAPHY AND CONTENT STYLES */
+/* ---------------------------------------------------- */
+
 h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3.5rem;
-    text-align: center;
-    color: var(--color-highlight);
-    text-shadow: 0 0 10px rgba(197, 243, 97, 0.8), 0 0 20px rgba(197, 243, 97, 0.5); 
-    margin: 1.5rem 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    color: var(--color-highlight);
+    text-shadow: 0 0 10px rgba(197, 243, 97, 0.8), 0 0 20px rgba(197, 243, 97, 0.5); 
+    margin: 1.5rem 0;
 }
 
 h2 {
-    margin-top: 3rem;
-    color: var(--color-highlight);
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 8px var(--color-primary), 0 0 20px var(--color-primary);
-    border-bottom: 3px solid var(--color-accent);
-    padding-bottom: 8px;
-    font-size: 2rem;
-    text-align: left;
+    margin-top: 3rem;
+    color: var(--color-highlight);
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 8px var(--color-primary), 0 0 20px var(--color-primary);
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 8px;
+    font-size: 2rem;
+    text-align: left;
 }
 
 p {
-    line-height: 1.8;
-    font-size: 1.15em;
-    padding: 0;
-    text-align: justify;
-    background-color: rgba(0, 0, 0, 0.4); 
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
+    line-height: 1.8;
+    font-size: 1.15em;
+    padding: 0;
+    text-align: justify;
+    background-color: rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
 }
 
 strong { color: var(--color-primary); font-weight: 700; }
 em { color: var(--color-highlight); font-style: normal; }
-
 .data-capsule {
-    background-color: rgba(197, 243, 97, 0.15);
-    border-left: 5px solid var(--color-highlight);
-    padding: 15px;
-    margin: 20px 0; 
-    border-radius: 8px;
-    font-size: 1em;
-    font-weight: bold;
-    color: var(--color-highlight);
-    text-align: left;
-    box-shadow: 0 0 10px rgba(197, 243, 97, 0.3);
+    background-color: rgba(197, 243, 97, 0.15);
+    border-left: 5px solid var(--color-highlight);
+    padding: 15px;
+    margin: 20px 0; 
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--color-highlight);
+    text-align: left;
+    box-shadow: 0 0 10px rgba(197, 243, 97, 0.3);
 }
 
+/* ---------------------------------------------------- */
+/* 4. PRO BUTTONS AND NAVIGATION (Cyberpunk Style) */
+/* ---------------------------------------------------- */
+
 button {
-    padding: 15px 30px;
-    border-radius: 5px; 
-    background: var(--color-accent);
-    color: var(--color-text-dark);
-    border: 2px solid var(--color-accent); 
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 700;
-    box-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent);
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1px;
+    padding: 15px 30px;
+    border-radius: 5px; 
+    background: var(--color-accent);
+    color: var(--color-text-dark);
+    border: 2px solid var(--color-accent); 
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
 }
 
 button:hover {
-    background: transparent;
-    color: var(--color-secondary);
-    border-color: var(--color-primary); 
-    box-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
-    transform: translateY(-2px) scale(1.02);
+    background: transparent;
+    color: var(--color-secondary);
+    border-color: var(--color-primary); 
+    box-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0; 
-    margin-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0; 
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* SPECIFIC STYLES FOR MARTIN'S EXPERIENCE */
+.martin-experience {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-primary);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 600px; /* Maximum container width */
+    text-align: center;
+    box-shadow: 0 0 15px rgba(206, 30, 255, 0.4);
 }
 
+.martin-experience h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-highlight);
+    text-shadow: 0 0 8px rgba(197, 243, 97, 0.8);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    line-height: 1.3;
+}
+
+/* Image container: Defines the maximum image size */
+.martin-img-container {
+    width: 90%; 
+    max-width: 250px; /* **MAXIMUM IMAGE SIZE ON DESKTOP** */
+    margin: 0 auto 20px auto;
+    overflow: hidden;
+}
+
+/* Image style: Ensures the image is responsive */
+.martin-image {
+    width: 100%; /* Image occupies 100% of the container (max. 450px) */
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid var(--color-secondary);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.martin-experience p {
+    font-style: italic;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    font-size: 1.05em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Media Query for mobile responsiveness */
 @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 1.5rem; }
-    p { font-size: 1em; }
-    .nav-buttons { flex-direction: column; gap: 10px; }
-    button { width: 100%; font-size: 1rem; }
+    .martin-experience {
+        padding: 15px;
+        margin: 20px 5px;
+        max-width: 50%; /* Occupies more width on mobile */
+    }
+    .martin-experience h3 {
+        font-size: 1.4rem;
+    }
+}
+/* ---------------------------------------------------- */
+/* 5. PRO Level GAMES */
+/* ---------------------------------------------------- */
+
+/* ** CME GAME (Multiple Choice) - Existing Styles ** */
+.answer-btn {
+    width: 100%; margin: 5px 0; padding: 15px 20px; border-radius: 5px; text-align: left;
+    background: rgba(255, 255, 255, 0.1); color: var(--color-secondary);
+    border: 2px solid rgba(255, 255, 255, 0.3); cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.1s; font-size: 1.1em; font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: block; 
+}
+.answer-btn:hover { 
+    background: rgba(206, 30, 255, 0.2); 
+    border-color: var(--color-primary); 
+    transform: translateX(5px);
+}
+.correct-answer { 
+    background: #006400; 
+    border-color: var(--color-highlight); 
+    box-shadow: 0 0 15px var(--color-highlight); 
+    animation: flashGreen 0.5s;
+    pointer-events: none;
+}
+.incorrect-answer { 
+    background: #8B0000; 
+    border-color: var(--color-accent); 
+    animation: shake 0.5s;
+    pointer-events: none;
+}
+
+@keyframes flashGreen {
+    0% { background-color: #006400; }
+    50% { background-color: #38ff38; }
+    100% { background-color: #006400; }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* ** DRAG & DROP GAME (Draggable Images) - Existing Styles ** */
+#column-profesiones, #column-problemas {
+    width: 45%; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    align-items: center; 
+}
+#column-profesiones h4, #column-problemas h4 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.drag-item {
+    padding: 0; 
+    margin: 0; 
+    border-radius: 10px; 
+    cursor: grab; 
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+    border: 3px solid var(--color-primary); 
+    height: 150px; 
+    width: 150px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 0 12px var(--color-primary); 
+    flex-shrink: 0; 
+    align-self: center; 
+}
+
+.drag-item:hover { 
+    transform: scale(1.08); 
+    box-shadow: 0 0 25px var(--color-accent); 
+    border-color: var(--color-accent);
+}
+.drag-item.matched {
+    opacity: 0; 
+    pointer-events: none;
+    transition: opacity 0.5s ease-out, transform 0.2s ease;
+    transform: translateY(-25px) scale(0.7); 
+}
+
+/* Styles for the image inside the draggable container */
+.drag-item-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    padding: 8px; 
+    font-size: 1em; 
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-shadow: 0 0 6px #000; 
+    background-blend-mode: multiply; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 7px; 
+}
+
+/* Specific images for Drag & Drop */
+.drag-item[data-match="agricultor"] .drag-item-image { background-image: url('Agricultor.png'); }
+.drag-item[data-match="piloto"] .drag-item-image { background-image: url('piloto.png'); }
+.drag-item[data-match="operador"] .drag-item-image { background-image: url('electrico.png'); }
+
+
+.drop-target {
+    background: rgba(255, 255, 255, 0.08); 
+    border: 3px dashed var(--color-text-light); 
+    padding: 20px; 
+    margin: 0; 
+    border-radius: 10px; 
+    min-height: 150px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    text-align: center; 
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    font-style: italic;
+    width: 100%; 
+    box-sizing: border-box; 
+    color: var(--color-text-light);
+    font-size: 1.2em; 
+}
+.drop-target.hovered { 
+    background-color: rgba(206, 30, 255, 0.4); 
+    border-color: var(--color-primary); 
+    box-shadow: 0 0 20px rgba(206, 30, 255, 0.7); 
+}
+.matched {
+    background-color: rgba(197, 243, 97, 0.35); 
+    border: 3px solid var(--color-highlight);
+    color: var(--color-highlight); 
+    pointer-events: none;
+    box-shadow: 0 0 15px var(--color-highlight);
+    font-style: normal;
+}
+
+/* Container to center the video button */
+.video-button-container {
+    text-align: center;
+    margin-top: 25px; 
+    margin-bottom: 20px; 
+}
+
+/* ** MEMORY GAME (Flip Card Effect) - NEW and improved styles ** */
+.memory-card-container {
+    perspective: 1000px;
+    height: 100px;
+}
+.memory-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.memory-card.flipped {
+    transform: rotateY(180deg);
+}
+.memory-card.matched {
+    /* The matched state is now the one we want to stay visible */
+    transform: rotateY(0deg); 
+    pointer-events: none;
+    box-shadow: 0 0 15px var(--color-highlight);
+    background-color: transparent; /* Ensure it doesn't interfere */
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: 8px;
+    font-size: 0.9em;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.card-back {
+    /* Initial state: Covered */
+    background: var(--color-primary);
+    color: var(--color-text-dark);
+    font-family: 'Orbitron', sans-serif;
+    border: 3px solid var(--color-accent);
+}
+
+.card-front {
+    /* State when flipped and MATCHED: Visible */
+    background: var(--color-bg-dark);
+    color: var(--color-highlight);
+    transform: rotateY(180deg);
+    border: 3px solid var(--color-highlight);
+}
+
+/* SPECIFIC STYLE FOR MATCHED CARDS (NEW) */
+.memory-card.matched .card-front {
+    /* When the pair is found, we force the front to be visible */
+    transform: rotateY(0deg);
+    background-color: var(--color-bg-dark); /* Dark background for white/neon text */
+    color: var(--color-secondary);
+    border-color: var(--color-highlight);
+    animation: pulseMatch 1s ease-out;
+}
+.memory-card.matched .card-back {
+    /* Hide the back of the card permanently */
+    display: none;
+}
+
+@keyframes pulseMatch {
+    0% { box-shadow: 0 0 0 rgba(197, 243, 97, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(197, 243, 97, 1); }
+    100% { box-shadow: 0 0 15px var(--color-highlight); }
+}
+
+
+#memory-game {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    margin: 20px 0;
+}
+
+/* ---------------------------------------------------- */
+/* 7. MEDIA QUERIES (RESPONSIVE DESIGN) */
+/* ---------------------------------------------------- */
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.5rem; }
+    p { font-size: 1em; }
+    
+    /* NAV: Hide on mobile if it's a full-screen design */
+    nav { display: none; }
+    
+    main { padding: 0 15px; }
+    section { padding: 20px 0; }
+    
+    .impact-grid-and-text { flex-direction: column; }
+    
+    .nav-buttons { flex-direction: column; gap: 10px; }
+    .nav-buttons button { width: 100%; }
+    
+    .answer-btn { padding: 10px 15px; font-size: 1em; }
+
+    /* ** DRAG & DROP GAME: Columns stack ** */
+    #column-profesiones, #column-problemas {
+        width: 100%; /* Occupy full width */
+        align-items: center; 
+    }
+    #column-profesiones {
+        /* So that draggable images and drop zones are not stuck together */
+        margin-bottom: 30px; 
+    }
+    
+    /* Smaller but usable Drag & Drop elements */
+    .drag-item { width: 100px; height: 100px; } 
+    .drag-item-image { font-size: 0.9em; } /* Adjust text size inside the item */
+    .drop-target { min-height: 100px; font-size: 1em; } 
+    
+    /* Memory Game */
+    #memory-game { grid-template-columns: repeat(3, 1fr); }
+    .memory-card-container { height: 80px; }
+    
+    button { padding: 12px 20px; font-size: 1rem; }
+}
+
+@media (max-width: 450px) {
+    /* Adjustments for small phones */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.3rem; }
+    p { font-size: 0.95em; }
+    
+    .drag-item { width: 80px; height: 80px; }
+    .drag-item-image { font-size: 0.8em; } /* Even smaller text on very small screens */
+    .drop-target { min-height: 80px; font-size: 0.9em; }
+    
+    #memory-game { grid-template-columns: repeat(2, 1fr); }
+    .memory-card-container { height: 70px; } /* Adjust height to maintain aspect ratio */
 }
 </style>
 </head>
 <body>
 
+<nav>
+    <div class="nav-container">
+        <ul>
+            <li><a href="#bienvenida" data-index="0">👋 Lumi</a></li>
+            <li><a href="#viaje" data-index="1">🚀 The Journey</a></li>
+            <li><a href="#auroras" data-index="2">🌌 Auroras</a></li>
+            <li><a href="#travesuras" data-index="3">⚠️ Mischief</a></li>
+            <li><a href="#nasa" data-index="4">🔭 NASA</a></li>
+            <li><a href="#cuidado" data-index="5">🛡️ Protection</a></li>
+            <li><a href="#conclusion" data-index="6">✅ Conclusion</a></li>
+        </ul>
+    </div>
+</nav>
+
 <main>
-<!-- 1. WELCOME -->
-<section id="bienvenida" class="active">
-<h1>Lumi’s Visit: A Solar Adventure</h1>
-<h2>Who am I?</h2>
-<p>Hi! My name is <strong>Lumi</strong>. I’m a little flame from the Sun. Sometimes I leap off the Sun as light and wind and travel through space. That’s what we call <em>space weather</em>. My energy is so powerful that it lights up everything around me.</p>
-<p>I love to explore the Solar System and see what my light touches. Would you like to come with me?</p>
-<div class="nav-buttons">
-    <span></span>
-    <button onclick="changePage(1)">NEXT 🚀</button>
-</div>
-</section>
+    
+    <section id="bienvenida" class="page-section active">
+        <h1>Lumi's Visit: A Solar Adventure</h1>
+        <h2>Who am I?</h2>
+        <p>Hello, my name is <strong>Lumi</strong>. I am a small flame from the Sun. Sometimes I jump off the Sun as light and wind and travel through space. This is what humans call <em>space weather</em>. My energy is so powerful that I illuminate everything around me.</p>
+        
+        <div class="interactividad">
+            <h3>⭐ Let the adventure begin!</h3>
+            <p>Click the button to follow Lumi's journey and unlock secrets of the Sun.</p>
+        </div>
+        <div class="nav-buttons">
+            <span></span>
+            <button onclick="changePage(1)">NEXT 🚀</button>
+        </div>
+    </section>
 
-<!-- 2. THE JOURNEY -->
-<section id="viaje">
-<h2>My Journey to Earth 🌍</h2>
-<p>One day, I decided to visit a blue and green planet called <strong>Earth</strong>. It looked so beautiful from afar! I traveled super fast, crossing space in just a few minutes. As I got closer, I noticed something amazing: a glowing bubble around the planet.</p>
-<p>That’s Earth’s <em>magnetic field</em> — a shield that protects the planet from my strongest rays. Without it, life wouldn’t be possible there.</p>
-<div class="data-capsule">
-🛰️ Fun Fact: The Sun’s wind travels at about 400 kilometers per second!
-</div>
-<div class="nav-buttons">
-    <button onclick="changePage(0)">⬅️ BACK</button>
-    <button onclick="changePage(2)">NEXT 🌈</button>
-</div>
-</section>
+    <section id="viaje" class="page-section">
+        <h2>The Journey to Earth</h2>
+        <p>One day, I got very excited and burst out with more force. I traveled as a giant wave of particles and magnetic field: humans call this a <strong>Coronal Mass Ejection (CME)</strong>. My journey through vast space is an adventure full of speed and energy.</p>
+        
+        <div class="interactividad">
+            <h3>So... What does CME mean?</h3>
+            <p>Lumi explained it to you: How does the giant wave of particles coming from the Sun travel?</p>
+            <div id="cme-quiz">
+                <div class="option-container" data-answer="incorrect">
+                    <button class="answer-btn">A: It's a slow ray of light traveling into space.</button>
+                </div>
+                <div class="option-container" data-answer="correct">
+                    <button class="answer-btn">B: It's a large wave of particles and magnetic field.</button>
+                </div>
+                <div class="option-container" data-answer="incorrect">
+                    <button class="answer-btn">C: It's a rock meteor that has been ejected from the Sun.</button>
+                </div>
+            </div>
+            
+            <p id="quiz-feedback" style="text-align: center; font-weight: 700; margin-top: 20px; display: none;"></p>
 
-<!-- 3. AURORAS -->
-<section id="auroras">
-<h2>When I Meet the Polar Sky ✨</h2>
-<p>When I reached the North and South Poles, something magical happened! My charged particles collided with Earth’s magnetic field and created dancing lights in the sky — the <strong>auroras</strong>!</p>
-<p>People in northern countries like Norway and Canada watch them and call them “Aurora Borealis.” In the south, it’s the “Aurora Australis.”</p>
-<div class="data-capsule">
-🌌 Did you know? Auroras can appear in shades of green, pink, red, yellow, and violet depending on the gases in the atmosphere.
-</div>
-<div class="nav-buttons">
-    <button onclick="changePage(1)">⬅️ BACK</button>
-    <button onclick="changePage(3)">NEXT ⚡</button>
-</div>
-</section>
+            <div id="data-capsule-cme" class="data-capsule" style="display: none;">
+                💡 Fact Unlocked: A CME (like Lumi) travels at a speed of up to 3,000 kilometers per second, crossing the distance from the Sun to Earth in just a couple of days!
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="changePage(-1)">PREVIOUS 👋</button>
+            <button onclick="changePage(1)">NEXT 🌌</button>
+        </div>
+    </section>
 
-<!-- 4. SOLAR MISCHIEF -->
-<section id="travesuras">
-<h2>Oops! My Solar Mischief 😅</h2>
-<p>Sometimes I get a little too excited and release <strong>solar flares</strong> — powerful bursts of energy that can disrupt satellites, radio signals, and even electricity on Earth.</p>
-<p>But don’t worry! Scientists are always watching me closely to predict when I might send out one of those big solar tantrums.</p>
-<div class="data-capsule">
-⚠️ NASA’s satellites constantly observe the Sun to predict space weather and protect Earth’s technology.
-</div>
-<div class="nav-buttons">
-    <button onclick="changePage(2)">⬅️ BACK</button>
-    <button onclick="changePage(4)">NEXT 🔭</button>
-</div>
-</section>
+    <section id="auroras" class="page-section">
+        <h2>Auroras and Dancing Lights</h2>
+        <p>And then, the magic happens! Upon reaching Earth, I meet its invisible shield: the <em>magnetic field</em>. When my energy and particles collide with the atmosphere, they paint the sky with dancing colored lights. It's an amazing spectacle known as **auroras**, a grand light show at the North Pole and the South Pole!</p>
+        <div class="data-capsule">
+            🌌 Extra Fact: Auroras occur about 100 to 300 kilometers high, right where the atmosphere meets space!
+        </div>
 
-<!-- 5. NASA’S HELP -->
-<section id="nasa">
-<h2>NASA and the Solar Explorers 🚀</h2>
-<p>At NASA, scientists and engineers study me using spacecraft like <strong>Parker Solar Probe</strong> and <strong>Solar Dynamics Observatory</strong>. They gather my light, my flares, and even my solar wind to learn more about how I behave.</p>
-<p>They use this knowledge to keep astronauts and satellites safe and to prepare for future missions deeper into the Solar System!</p>
-<div class="nav-buttons">
-    <button onclick="changePage(3)">⬅️ BACK</button>
-    <button onclick="changePage(5)">NEXT 🛡️</button>
-</div>
-</section>
+        <div class="nav-buttons">
+            <button onclick="changePage(-1)">PREVIOUS </button>
+            <button onclick="changePage(1)">NEXT 🚀</button>
+        </div>
+    </section>
 
-<!-- 6. TAKING CARE OF OUR PLANET -->
-<section id="cuidado">
-<h2>Protecting Our Home 🌍</h2>
-<p>Even though my energy gives life, it can also harm if not respected. That’s why it’s important to <strong>take care of Earth’s atmosphere</strong> — it works with the magnetic field to protect every living thing.</p>
-<p>By reducing pollution and caring for forests and the air, humans help keep this natural shield strong. Remember: the healthier the planet, the better it can protect itself from space storms.</p>
-<div class="data-capsule">
-🌱 Tip: Trees and clean air help Earth defend itself better against radiation.
-</div>
-<div class="nav-buttons">
-    <button onclick="changePage(4)">⬅️ BACK</button>
-    <button onclick="changePage(6)">NEXT 🌞</button>
-</div>
-</section>
+    <section id="travesuras" class="page-section">
+        <h2>When Lumi Plays Tricks (Mischief)</h2>
+        <p>Although many love to see my light dances, sometimes my mischief has unexpected consequences. See who can feel my games!</p>
+        
+        <div class="impact-grid-and-text">
+            
+            <div class="impact-cards-container">
+                <div class="impact-card" id="impact-agricultor"></div>
+                <div class="impact-card" id="impact-piloto"></div>
+                <div class="impact-card" id="impact-operador"></div>
+                <div class="impact-card" id="impact-astronauta"></div>
+            </div>
 
-<!-- 7. CONCLUSION -->
-<section id="conclusion">
-<h2>Until Next Time! 💫</h2>
-<p>Now you know my story! I am Lumi, a spark from the Sun. I light up the sky, create auroras, and send energy through space. And you — from your beautiful planet — can study me and learn how to protect your world better every day.</p>
-<p>Thanks for joining me on this adventure! 🌟</p>
-<div class="data-capsule">
-💡 Remember: Taking care of Earth is also taking care of the Sun’s gift — life.
-</div>
-<div class="nav-buttons">
-    <button onclick="changePage(5)">⬅️ BACK</button>
-</div>
-</section>
+            <div class="impact-text-list">
+                <h3>Who Lumi affects:</h3>
+                <ul>
+                    <li>
+                        <strong>Farmer:</strong> Satellite signals, vital for modern machinery and accurate forecasts, can fail.
+                    </li>
+                    <li>
+                        <strong>Pilot:</strong> Radio communications can become blurred and navigation systems like GPS can lose their way.
+                    </li>
+                    <li>
+                        <strong>Electrical Grid Operator:</strong> My currents can be so strong that they damage transformers and, in extreme cases, cause blackouts!
+                    </li>
+                    <li>
+                        <strong>Astronaut:</strong> In the vastness of space, the radiation I bring can be dangerous.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="interactividad">
+            <h3>Drag a **PROFESSION** and drop it into its corresponding **PROBLEM**. Complete the challenge to see a historical fact!</h3>
+            <p>
+            <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
+                <div id="column-profesiones">
+                    <h4>PROFESSIONS (Drag the image)</h4>
+                    
+                    <div class="drag-item" data-match="agricultor">
+                        <div class="drag-item-image">Farmer</div>
+                    </div>
+
+                    <div class="drag-item" data-match="piloto">
+                        <div class="drag-item-image">Pilot</div>
+                    </div>
+
+                    <div class="drag-item" data-match="operador">
+                        <div class="drag-item-image">Elec. Operator</div>
+                    </div>
+
+                </div>
+                
+                <div id="column-problemas">
+                    <h4>PROBLEMS</h4>
+                    <div class="drop-target" data-target="piloto">Loss of GPS/radio signal</div>
+                    <div class="drop-target" data-target="operador">Damage to transformers and blackouts</div>
+                    <div class="drop-target" data-target="agricultor">Machinery and forecast failure</div>
+                </div>
+            </div>
+            
+            <div id="game-message" class="data-capsule" style="display: none; background-color: rgba(255, 105, 180, 0.2); border-left: 5px solid var(--color-accent);">
+                Amazing, you've completed the mission!
+                <p>💥 NASA Historical Fact: A team of scientists, led by Laura Hayes, a solar physicist who divides her time between NASA's Goddard Center and Trinity College Dublin, Ireland, investigated the connection between solar flares and the Earth's atmosphere. They discovered pulses in the electrified layer of the atmosphere, called the ionosphere, that mirrored X-ray oscillations during a flare on July 24, 2016. A true mischief of Lumi!</p>
+            </div>
+
+            <h3 style="margin-top: 40px;">📹 Learn about Space Weather</h3>
+            <p>Click the button to watch a video directly from NASA that explains how the Sun's energy influences Earth.</p>
+            <div class="video-button-container">
+                <button onclick="window.open('https://svs.gsfc.nasa.gov/12640/', '_blank')" style="margin-top: 10px;">Watch NASA Video 🚀</button>
+            </div>
+            
+        </div>
+        <div class="nav-buttons">
+            <button onclick="changePage(-1)">PREVIOUS</button>
+            <button onclick="changePage(1)">NEXT 🔭</button>
+        </div>
+    </section>
+
+    <section id="nasa" class="page-section">
+        <h2>🔭 Eyes on the Sun: The Guardians of NASA</h2>
+        <p>But don't worry! Earth has very smart guardians. Scientists and agencies like **NASA** have the mission to observe my home. Thanks to advanced satellites, they can see me leave the Sun, even before I get close to Earth.</p>
+        <p>This constant vigilance allows them to warn everyone in time, making my "mischief" just a beautiful light show.</p>
+        
+        <div class="interactividad">
+            <h3>Learn about NASA's tools that help scientists with Space Weather:</h3>
+            <div class="accordion-container" style="padding: 0;">
+                <div class="accordion-item">
+                    <button class="accordion-title">SDO (Solar Dynamics Observatory) 🛰️</button>
+                    <div class="accordion-content">
+                        <p>SDO is NASA's eye that watches the Sun 24/7. It sends images and data that allow scientists to see Lumi (CME) the exact moment I leave the Sun. It is crucial for early warnings.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-title">Parker Solar Probe 🚀</button>
+                    <div class="accordion-content">
+                        <p>This is the boldest spacecraft. On a mission to "touch the Sun," NASA's Parker Solar Probe became the first spacecraft to fly through the corona (the Sun's upper atmosphere) in 2021. Its mission is to touch and analyze solar wind and CMEs, giving us essential information from Lumi's battleground.</p>
+                </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-title">SOHO (Solar and Heliospheric Observatory) 🔭</button>
+                    <div class="accordion-content">
+                        <p>SOHO has been our watchdog since 1995. Located at a strategic point, it monitors space weather. Without SOHO, we wouldn't know much of what happens on the Sun.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="changePage(-1)">PREVIOUS ⚠️</button>
+            <button onclick="changePage(1)">NEXT 🛡️</button>
+        </div>
+    </section>
+
+    <section id="cuidado" class="page-section">
+        <h2>How Do We Protect Ourselves?</h2>
+        <p>Scientists observe the Sun with advanced telescopes and special satellites to let us know when I and my friends are visiting. This way, aviators, power companies, and space agencies can prepare, protecting their equipment and, most importantly, people.</p>
+
+        <div class="interactividad">
+            <h3>🧠 Memory Game: Match the Cards</h3>
+            <p>Click to reveal the card. Find the 4 protection pairs that humans use.</p>
+            <div id="memory-game">
+            </div>
+            <p id="memory-message" class="data-capsule" style="display: none; background-color: rgba(255, 105, 180, 0.2); border-left: 5px solid var(--color-accent); margin-top: 20px;">
+                🎉 Amazing Memory! You have helped humanity prepare against Lumi's mischief.
+            </p>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="changePage(-1)">PREVIOUS 🔭</button>
+            <button onclick="changePage(1)">NEXT ✅</button>
+        </div>
+    </section>
+    <section id="conclusion" class="page-section">
+        <h2>Lumi Learns to Play Carefully</h2>
+        <p>Over time, I understood that my energy was not only beautiful but also incredibly powerful. I learned to travel more carefully, and humans, in turn, learned to protect themselves from my most intense games. So, the next time you see the auroras dancing in the sky, remember that they are my luminous greeting, Lumi's signature saying hello from the Sun.</p>
+        
+        <div class="martin-experience">
+            <h3>MARTIN'S EXPERIENCE SEEING THE AURORAS</h3>
+              <div class="martin-img-container">
+        <img src="./Martin.jpg" alt="Martín observing the auroras" class="martin-image">
+            </div>
+            <p>
+              I traveled to the North of the planet to see the auroras, and when night fell, we received a notification from an App that told us a scene was coming. I jumped with excitement, I was very nervous, very happy. As a photographer, I grabbed my camera and tripod and ran out to see the auroras. It was one of the most beautiful things I've ever lived, an indescribable emotion, the happiness of having fulfilled something I always dreamed of. I had the blessing of being able to enjoy it.
+            </p>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="changePage(-1)">PREVIOUS 🛡</button>
+            <button onclick="window.location.href = 'index.html'">FINISH 👋</button>
+        </div>
+    </section>
 </main>
 
 <script>
-const sections = document.querySelectorAll('section');
-let currentIndex = 0;
+const sections = document.querySelectorAll('.page-section');
+let currentPageIndex = 0;
 
-function changePage(index) {
-  if (index >= 0 && index < sections.length) {
-    sections[currentIndex].classList.remove('active');
-    sections[index].classList.add('active');
-    currentIndex = index;
-    window.scrollTo(0, 0);
-  }
+
+function updatePageDisplay() {
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+
+    if (sections[currentPageIndex]) {
+        sections[currentPageIndex].classList.add('active');
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        const currentId = sections[currentPageIndex].id;
+        const activeLink = document.querySelector(`nav a[href="#${currentId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
 }
-</script>
 
-</body>
-</html>
+function changePage(direction) {
+    let newIndex = currentPageIndex + direction;
+
+    if (newIndex >= 0 && newIndex < sections.length) {
+        currentPageIndex = newIndex;
+        updatePageDisplay();
+    }
+}
+
+updatePageDisplay(); 
+
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetSection = document.querySelector(this.getAttribute('href'));
+        if (targetSection) {
+            currentPageIndex = Array.from(sections).indexOf(targetSection);
+            updatePageDisplay();
+        }
+    });
+});
+
+// =========================================================================
+// GAME LOGIC
+// =========================================================================
+
+// 2. MULTIPLE CHOICE GAME LOGIC (CME - Journey Section)
+const answerBtns = document.querySelectorAll('#cme-quiz .answer-btn');
+const feedbackText = document.getElementById('quiz-feedback');
+const cmeDataCapsule = document.getElementById('data-capsule-cme');
+
+answerBtns.forEach(button => {
+    button.addEventListener('click', (e) => {
+        // Only allow one click
+        if (e.currentTarget.closest('#cme-quiz').classList.contains('answered')) return;
+
+        e.currentTarget.closest('#cme-quiz').classList.add('answered');
+
+        const parentContainer = e.currentTarget.closest('.option-container');
+        const answer = parentContainer.getAttribute('data-answer');
+
+        if (answer === 'correct') {
+            e.currentTarget.classList.add('correct-answer');
+            feedbackText.style.color = 'var(--color-highlight)';
+            feedbackText.textContent = '✅ Correct Answer! Keep Reading!';
+            cmeDataCapsule.style.display = 'block'; 
+        } else {
+            e.currentTarget.classList.add('incorrect-a
