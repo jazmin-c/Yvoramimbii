@@ -31,7 +31,7 @@ body {
 }
 
 /* ---------------------------------------------------- */
-/* 2. DYNAMIC BACKGROUND (SPACE GRADIENT AND SECTION BACKGROUNDS) */
+/* 2. DYNAMIC BACKGROUND (Space Gradient and Section Backgrounds) */
 /* ---------------------------------------------------- */
 body::before {
     content: '';
@@ -70,7 +70,7 @@ section {
     background-color: transparent;
 }
 
-/* KEY: Pseudo-element for FULL-SCREEN BACKGROUND */
+/* KEY: Pseudo-element for FULL SCREEN BACKGROUND */
 section::before {
     content: '';
     position: fixed; 
@@ -99,12 +99,12 @@ section.active::before {
 
 
 /* SPECIFIC SECTION BACKGROUNDS */
-#welcome::before { background-image: url('Lumi.png'); background-position: top center; }
-#journey::before { background-image: url('lumiytierra.png'); }
+#bienvenida::before { background-image: url('Lumi.png'); background-position: top center; }
+#viaje::before { background-image: url('lumiytierra.png'); }
 #auroras::before { background-image: url('auroras.png'); }
-#mischief::before { background-image: url('SPACE.jpg'); } 
+#travesuras::before { background-image: url('SPACE.jpg'); } 
 #nasa::before { background-image: url('cientificos.png'); }
-#protection::before { background-image: url('cientificos.png'); }
+#cuidado::before { background-image: url('cientificos.png'); }
 #conclusion::before { background-image: url('Lumi.png'); }
 
 /* ---------------------------------------------------- */
@@ -159,7 +159,7 @@ em { color: var(--color-highlight); font-style: normal; }
 }
 
 /* ---------------------------------------------------- */
-/* 4. PRO BUTTONS AND NAVIGATION (Cyberpunk Style) */
+/* 4. BUTTONS AND PRO NAVIGATION (Cyberpunk Style) */
 /* ---------------------------------------------------- */
 
 button {
@@ -200,7 +200,7 @@ button:hover {
     padding: 25px;
     border-radius: 10px;
     margin: 40px auto;
-    max-width: 600px; /* Maximum container width */
+    max-width: 600px; /* Max width of the container */
     text-align: center;
     box-shadow: 0 0 15px rgba(206, 30, 255, 0.4);
 }
@@ -214,17 +214,17 @@ button:hover {
     line-height: 1.3;
 }
 
-/* Image Container: Defines the maximum size of the image */
+/* Image container: Defines the max size of the image */
 .martin-img-container {
     width: 90%; 
-    max-width: 250px; /* **MAXIMUM IMAGE SIZE ON DESKTOP** */
+    max-width: 250px; /* **MAX IMAGE SIZE ON DESKTOP** */
     margin: 0 auto 20px auto;
     overflow: hidden;
 }
 
-/* Image Style: Ensures the image is responsive */
+/* Image style: Ensures the image is responsive */
 .martin-image {
-    width: 100%; /* The image takes up 100% of the container (max. 450px) */
+    width: 100%; /* Image takes 100% of the container (max 450px) */
     height: auto;
     display: block;
     border-radius: 8px;
@@ -244,16 +244,16 @@ button:hover {
 /* Media Query for mobile responsiveness */
 @media (max-width: 768px) {
     .martin-experience {
-        padding: 15px;
-        margin: 20px 5px;
-        max-width: 50%; /* Takes up more width on mobile */
+        padding: 20px;
+        margin: 25px 10px;
+        max-width: 90%; /* Takes up more width on mobile */
     }
     .martin-experience h3 {
         font-size: 1.4rem;
     }
 }
 /* ---------------------------------------------------- */
-/* 5. PRO Level GAMES */
+/* 5. PRO LEVEL GAMES */
 /* ---------------------------------------------------- */
 
 /* ** CME GAME (Multiple Choice) - Existing Styles ** */
@@ -338,7 +338,7 @@ button:hover {
     transform: translateY(-25px) scale(0.7); 
 }
 
-/* Style of the image inside the draggable container */
+/* Style for the image inside the draggable container */
 .drag-item-image {
     width: 100%;
     height: 100%;
@@ -358,10 +358,10 @@ button:hover {
     border-radius: 7px; 
 }
 
-/* Specific Images for Drag & Drop */
-.drag-item[data-match="farmer"] .drag-item-image { background-image: url('Agricultor.png'); }
-.drag-item[data-match="pilot"] .drag-item-image { background-image: url('piloto.png'); }
-.drag-item[data-match="operator"] .drag-item-image { background-image: url('electrico.png'); }
+/* Specific images for Drag & Drop */
+.drag-item[data-match="agricultor"] .drag-item-image { background-image: url('Agricultor.png'); }
+.drag-item[data-match="piloto"] .drag-item-image { background-image: url('piloto.png'); }
+.drag-item[data-match="operador"] .drag-item-image { background-image: url('electrico.png'); }
 
 
 .drop-target {
@@ -423,7 +423,7 @@ button:hover {
     transform: rotateY(180deg);
 }
 .memory-card.matched {
-    /* The matched state is now what we want to remain visible */
+    /* The matched state is what we want to remain visible */
     transform: rotateY(0deg); 
     pointer-events: none;
     box-shadow: 0 0 15px var(--color-highlight);
@@ -447,7 +447,7 @@ button:hover {
 }
 
 .card-back {
-    /* Initial State: Covered */
+    /* Initial state: Covered */
     background: var(--color-primary);
     color: var(--color-text-dark);
     font-family: 'Orbitron', sans-serif;
@@ -455,7 +455,7 @@ button:hover {
 }
 
 .card-front {
-    /* Flipped and MATCHED State: Visible */
+    /* State when flipped and MATCHED: Visible */
     background: var(--color-bg-dark);
     color: var(--color-highlight);
     transform: rotateY(180deg);
@@ -464,7 +464,7 @@ button:hover {
 
 /* SPECIFIC STYLE FOR MATCHED CARDS (NEW) */
 .memory-card.matched .card-front {
-    /* When a pair is found, we force the front to remain visible */
+    /* When a pair is found, force the front to stay visible */
     transform: rotateY(0deg);
     background-color: var(--color-bg-dark); /* Dark background for white/neon text */
     color: var(--color-secondary);
@@ -472,7 +472,7 @@ button:hover {
     animation: pulseMatch 1s ease-out;
 }
 .memory-card.matched .card-back {
-    /* Permanently hide the back of the card */
+    /* Hide the back of the card permanently */
     display: none;
 }
 
@@ -518,13 +518,13 @@ button:hover {
         align-items: center; 
     }
     #column-profesiones {
-        /* So that draggable images and drop zones are not stuck together */
+        /* To prevent draggable images and drop zones from sticking together */
         margin-bottom: 30px; 
     }
     
     /* Smaller but usable Drag & Drop elements */
     .drag-item { width: 100px; height: 100px; } 
-    .drag-item-image { font-size: 0.9em; } /* Adjust the size of the text inside the item */
+    .drag-item-image { font-size: 0.9em; } /* Adjust text size inside the item */
     .drop-target { min-height: 100px; font-size: 1em; } 
     
     /* Memory Game */
@@ -570,10 +570,10 @@ button:hover {
     <section id="welcome" class="page-section active">
         <h1>Lumi's Visit: A Solar Adventure</h1>
         <h2>Who Am I?</h2>
-        <p>Hello, my name is <strong>Lumi</strong>. I am a little flame from the Sun. Sometimes I leap from the Sun as light and wind and travel through space. This is what we call <em>space weather</em>. My energy is so powerful that I light up everything around me.</p>
+        <p>Hello, my name is <strong>Lumi</strong>. I am a small flame from the Sun. Sometimes I jump from the Sun as light and wind and travel through space. This is what humans call <em>space weather</em>. My energy is so powerful that I light up everything around me.</p>
         
         <div class="interactividad">
-            <h3>⭐ Let the Adventure Begin!</h3>
+            <h3>⭐ Let the adventure begin!</h3>
             <p>Click the button to follow Lumi's journey and unlock secrets of the Sun.</p>
         </div>
         <div class="nav-buttons">
@@ -584,27 +584,27 @@ button:hover {
 
     <section id="journey" class="page-section">
         <h2>The Journey to Earth</h2>
-        <p>One day, I got very excited and launched myself with more force. I traveled as a giant wave of particles and magnetic field: humans call this a <strong>coronal mass ejection (CME)</strong>. My journey across the vast space is an adventure full of speed and energy.</p>
+        <p>One day, I got very excited and burst out with extra force. I traveled as a giant wave of particles and magnetic field: humans call this a <strong>Coronal Mass Ejection (CME)</strong>. My journey through vast space is an adventure full of speed and energy.</p>
         
         <div class="interactividad">
             <h3>So... What does CME mean?</h3>
-            <p>Lumi explained it: How does the giant wave of particles coming from the Sun travel?</p>
+            <p>Lumi explained it to you: How does the giant wave of particles coming from the Sun travel?</p>
             <div id="cme-quiz">
                 <div class="option-container" data-answer="incorrect">
-                    <button class="answer-btn">A: It's a slow ray of light traveling into space.</button>
+                    <button class="answer-btn">A: It is a slow ray of light traveling into space.</button>
                 </div>
                 <div class="option-container" data-answer="correct">
-                    <button class="answer-btn">B: It's a great wave of particles and a magnetic field.</button>
+                    <button class="answer-btn">B: It is a large wave of particles and magnetic field.</button>
                 </div>
                 <div class="option-container" data-answer="incorrect">
-                    <button class="answer-btn">C: It's a rock meteor that has been ejected from the Sun.</button>
+                    <button class="answer-btn">C: It is a rock meteorite that has been ejected from the Sun.</button>
                 </div>
             </div>
             
             <p id="quiz-feedback" style="text-align: center; font-weight: 700; margin-top: 20px; display: none;"></p>
 
             <div id="data-capsule-cme" class="data-capsule" style="display: none;">
-                💡 Fact Unlocked: A CME (like Lumi) travels at a speed of up to 3,000 kilometers per second, crossing the distance from the Sun to Earth in just a couple of days!
+                💡 Fact Unlocked: A CME (like Lumi) travels at speeds up to 3,000 kilometers per second, crossing the distance from the Sun to Earth in just a couple of days!
             </div>
         </div>
         <div class="nav-buttons">
@@ -615,9 +615,9 @@ button:hover {
 
     <section id="auroras" class="page-section">
         <h2>Auroras and Dancing Lights</h2>
-        <p>And then, the magic happens! Upon reaching Earth, I encounter its invisible shield: the <em>magnetic field</em>. When my energy and particles collide with the atmosphere, they paint the sky with dancing colored lights. It's an amazing spectacle known as <strong>auroras</strong>, a great light show at the North Pole and the South Pole!</p>
+        <p>And then, the magic happens! Upon reaching Earth, I encounter its invisible shield: the <em>magnetic field</em>. When my energy and particles collide with the atmosphere, they paint the sky with dancing colored lights. It's an amazing spectacle known as <strong>auroras</strong>, a grand light show at the North Pole and South Pole!</p>
         <div class="data-capsule">
-            🌌Extra Fact: Auroras occur at about 100 to 300 kilometers high, right where the atmosphere meets space!
+            🌌 Extra Fact: Auroras occur about 100 to 300 kilometers high, right where the atmosphere meets space!
         </div>
 
         <div class="nav-buttons">
@@ -628,7 +628,7 @@ button:hover {
 
     <section id="mischief" class="page-section">
         <h2>When Lumi Causes Mischief</h2>
-        <p>Although many love to see my light dances, sometimes my mischief has unexpected consequences. See who can feel my games!</p>
+        <p>Although many love to watch my light dances, sometimes my mischief has unexpected consequences. Look who can feel my games!</p>
         
         <div class="impact-grid-and-text">
             
@@ -640,16 +640,16 @@ button:hover {
             </div>
 
             <div class="impact-text-list">
-                <h3>Who Lumi Affects:</h3>
+                <h3>Who Lumi affects:</h3>
                 <ul>
                     <li>
                         <strong>Farmer:</strong> Satellite signals, vital for modern machinery and accurate forecasts, can fail.
                     </li>
                     <li>
-                        <strong>Pilot:</strong> Radio communications can become blurred and navigation systems like GPS can lose their way.
+                        <strong>Pilot:</strong> Radio communications can become garbled, and navigation systems like GPS can lose their way.
                     </li>
                     <li>
-                        <strong>Electric Grid Operator:</strong> My currents can be so strong they damage transformers and, in extreme cases, cause blackouts!
+                        <strong>Power Grid Operator:</strong> My currents can be so strong they damage transformers and, in extreme cases, cause blackouts!
                     </li>
                     <li>
                         <strong>Astronaut:</strong> In the vastness of space, the radiation I bring can be dangerous.
@@ -659,41 +659,41 @@ button:hover {
         </div>
 
         <div class="interactividad">
-            <h3>Drag a **PROFESSION** and drop it onto its corresponding **PROBLEM**. Complete the challenge to see a historical fact!</h3>
+            <h3>Drag a **PROFESSION** and drop it onto the corresponding **PROBLEM**. Complete the challenge to see a historical fact!</h3>
             <p>
             <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
                 <div id="column-profesiones">
                     <h4>PROFESSIONS (Drag the image)</h4>
                     
-                    <div class="drag-item" data-match="farmer">
+                    <div class="drag-item" data-match="agricultor">
                         <div class="drag-item-image">Farmer</div>
                     </div>
 
-                    <div class="drag-item" data-match="pilot">
+                    <div class="drag-item" data-match="piloto">
                         <div class="drag-item-image">Pilot</div>
                     </div>
 
-                    <div class="drag-item" data-match="operator">
-                        <div class="drag-item-image">Elec. Grid Op.</div>
+                    <div class="drag-item" data-match="operador">
+                        <div class="drag-item-image">Power Op.</div>
                     </div>
 
                 </div>
                 
                 <div id="column-problemas">
                     <h4>PROBLEMS</h4>
-                    <div class="drop-target" data-target="pilot">Loss of GPS/radio signal</div>
-                    <div class="drop-target" data-target="operator">Transformer damage and blackouts</div>
-                    <div class="drop-target" data-target="farmer">Machinery and forecast failure</div>
+                    <div class="drop-target" data-target="piloto">Loss of GPS/radio signal</div>
+                    <div class="drop-target" data-target="operador">Damage to transformers and blackouts</div>
+                    <div class="drop-target" data-target="agricultor">Machinery failure and forecasts</div>
                 </div>
             </div>
             
             <div id="game-message" class="data-capsule" style="display: none; background-color: rgba(255, 105, 180, 0.2); border-left: 5px solid var(--color-accent);">
                 Amazing, you've completed the mission!
-                <p>💥Historical NASA Fact: A team of scientists, led by Laura Hayes, a solar physicist dividing her time between NASA's Goddard Center and Trinity College Dublin, Ireland, investigated the connection between solar flares and Earth's atmosphere. They discovered pulses in the electrified layer of the atmosphere, called the ionosphere, that reflected X-ray oscillations during a flare on July 24, 2016. A true mischief from Lumi!</p>
+                <p>💥 NASA Historical Fact: A team of scientists, led by Laura Hayes, a solar physicist who divides her time between NASA Goddard Space Flight Center and Trinity College Dublin, Ireland, investigated the connection between solar flares and the Earth's atmosphere. They discovered pulses in the electrified layer of the atmosphere, called the ionosphere, which mirrored X-ray oscillations during a flare on July 24, 2016. A true mischief by Lumi!</p>
             </div>
 
             <h3 style="margin-top: 40px;">📹 Learn About Space Weather</h3>
-            <p>Click the button to watch a video directly from NASA that explains how the Sun's energy influences Earth.</p>
+            <p>Click the button to watch a video directly from NASA explaining how the Sun's energy influences Earth.</p>
             <div class="video-button-container">
                 <button onclick="window.open('https://svs.gsfc.nasa.gov/12640/', '_blank')" style="margin-top: 10px;">Watch NASA Video 🚀</button>
             </div>
@@ -706,12 +706,12 @@ button:hover {
     </section>
 
     <section id="nasa" class="page-section">
-        <h2>🔭 Eyes on the Sun: The Guardians of NASA</h2>
-        <p>But don't be afraid! Earth has very intelligent guardians. Scientists and agencies like NASA have the mission to observe my home. Thanks to advanced satellites, they can see me leaving the Sun, even before I get close to Earth.</p>
-        <p>This constant vigilance allows them to warn everyone in advance, ensuring that my "mischief" is just a beautiful light show.</p>
+        <h2>🔭 Eyes on the Sun: NASA's Guardians</h2>
+        <p>But don't worry! Earth has very intelligent guardians. Scientists and agencies like NASA have the mission to observe my home. Thanks to advanced satellites, they can see me leave the Sun, even before I get close to Earth.</p>
+        <p>This constant vigilance allows them to warn everyone in advance, turning my "mischief" into just a beautiful light show.</p>
         
         <div class="interactividad">
-            <h3>Learn about NASA's tools that help scientists with Space Weather:</h3>
+            <h3>Learn about the NASA tools that help scientists with Space Weather:</h3>
             <div class="accordion-container" style="padding: 0;">
                 <div class="accordion-item">
                     <button class="accordion-title">SDO (Solar Dynamics Observatory) 🛰️</button>
@@ -722,13 +722,13 @@ button:hover {
                 <div class="accordion-item">
                     <button class="accordion-title">Parker Solar Probe 🚀</button>
                     <div class="accordion-content">
-                        <p>This is the boldest spacecraft. On a mission to "touch the Sun," NASA's Parker Solar Probe became the first spacecraft to fly through the corona (the Sun's upper atmosphere) in 2021. Its mission is to touch and analyze the solar wind and CMEs, giving us essential information from Lumi's battlefield.</p>
+                        <p>This is the bravest spacecraft. On a mission to "touch the Sun," NASA's Parker Solar Probe became the first spacecraft to fly through the corona (the Sun's upper atmosphere) in 2021. Its mission is to touch and analyze the solar wind and CMEs, giving us essential information from Lumi's battlefield.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-title">SOHO (Solar and Heliospheric Observatory) 🔭</button>
                     <div class="accordion-content">
-                        <p>SOHO has been our lookout since 1995. Located at a strategic point, it monitors space weather. Without SOHO, we wouldn't know much of what happens on the Sun.</p>
+                        <p>SOHO has been our sentinel since 1995. Located at a strategic point, it monitors space weather. Without SOHO, we wouldn't know much of what happens on the Sun.</p>
                     </div>
                 </div>
             </div>
@@ -741,7 +741,7 @@ button:hover {
 
     <section id="protection" class="page-section">
         <h2>How Do We Protect Ourselves?</h2>
-        <p>Scientists watch the Sun with advanced telescopes and special satellites to warn us when my friends and I come to visit. This way, aviators, electric companies, and space agencies can prepare, protecting their equipment and, most importantly, people.</p>
+        <p>Scientists observe the Sun with advanced telescopes and special satellites to warn us when I and my friends are coming to visit. This way, aviators, power companies, and space agencies can prepare, protecting their equipment and, most importantly, people.</p>
 
         <div class="interactividad">
             <h3>🧠 Memory Game: Match the Cards</h3>
@@ -758,16 +758,16 @@ button:hover {
         </div>
     </section>
     <section id="conclusion" class="page-section">
-        <h2>Lumi Learns to Play with Care</h2>
-        <p>Over time, I understood that my energy was not only beautiful but also incredibly powerful. I learned to travel more carefully, and humans, in turn, learned to protect themselves from my most intense games. So, the next time you see the auroras dancing in the sky, remember that they are my luminous greeting, Lumi's signature waving from the Sun.</p>
+        <h2>Lumi Learns to Play Carefully</h2>
+        <p>Over time, I understood that my energy was not only beautiful but also incredibly powerful. I learned to travel more carefully, and humans, in turn, learned to protect themselves from my more intense games. So, next time you see the auroras dancing in the sky, remember they are my luminous greeting, Lumi's signature wave from the Sun.</p>
         
         <div class="martin-experience">
             <h3>MARTIN'S EXPERIENCE SEEING THE AURORAS</h3>
               <div class="martin-img-container">
-        <img src="./Martin.jpg" alt="Martin observing the auroras" class="martin-image">
+        <img src="./Martin.jpg" alt="Martín observing the auroras" class="martin-image">
             </div>
             <p>
-              I traveled to the North of the planet to see the auroras. When night fell, we received a notification from an App telling us there would be a display. I jumped with excitement, I was very nervous, very happy. As a photographer, I grabbed my camera and tripod and ran out to see the auroras. It was one of the most beautiful things I've ever experienced, an indescribable emotion, the happiness of fulfilling something I always dreamed of. I was blessed to be able to enjoy that.
+              I traveled to the North of the planet to see the auroras. When night fell, we received a notification from an App that warned us there would be a display. I jumped for joy, I was very nervous, very happy. As a photographer, I grabbed my camera and tripod and ran out to see the auroras, one of the most beautiful things I've ever experienced, indescribable emotion, happiness at having fulfilled a lifelong dream. I was blessed to be able to enjoy it.
             </p>
         </div>
         <div class="nav-buttons">
@@ -824,7 +824,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 
 // =========================================================================
-// GAME LOGIC
+// GAMES LOGIC
 // =========================================================================
 
 // 2. MULTIPLE CHOICE GAME LOGIC (CME - Journey Section)
@@ -848,10 +848,203 @@ answerBtns.forEach(button => {
             feedbackText.textContent = '✅ Correct Answer! Keep reading!';
             cmeDataCapsule.style.display = 'block'; 
         } else {
-            e.curcurrentTarget.classList.add('incorrect-answer');
-    // Resalta la respuesta correcta
-    document.querySelector('#cme-quiz .option-container[data-answer="correct"] button').classList.add('correct-answer');
-    feedbackText.style.color = 'var(--color-accent)';
-    feedbackText.textContent = '❌ Respuesta Incorrecta. La respuesta correcta ha sido resaltada.';
+            e.currentTarget.classList.add('incorrect-answer');
+            // Highlight the correct answer
+            document.querySelector('#cme-quiz .option-container[data-answer="correct"] button').classList.add('correct-answer');
+            feedbackText.style.color = 'var(--color-accent)';
+            feedbackText.textContent = '❌ Incorrect Answer. The correct answer has been highlighted.';
+        }
+        feedbackText.style.display = 'block';
+    });
+});
+
+// 3. DRAG AND DROP GAME LOGIC (Mischief)
+const dragItems = document.querySelectorAll('.drag-item');
+const dropTargets = document.querySelectorAll('.drop-target');
+const gameMessage = document.getElementById('game-message');
+let matchedCount = 0;
+let totalMatches = 3;
+
+dragItems.forEach(item => {
+    item.setAttribute('draggable', true);
+    item.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', item.getAttribute('data-match'));
+        setTimeout(() => item.style.opacity = '0.4', 0);
+    });
+    item.addEventListener('dragend', (e) => {
+        // If the item hasn't been matched (doesn't have the 'matched' class), reset its opacity
+        if (!e.target.classList.contains('matched')) { 
+            e.target.style.opacity = '1';
+        }
+    });
+});
+
+dropTargets.forEach(target => {
+    target.addEventListener('dragover', (e) => {
+        e.preventDefault(); 
+        target.classList.add('hovered');
+    });
+
+    target.addEventListener('dragleave', (e) => {
+        target.classList.remove('hovered');
+    });
+
+    target.addEventListener('drop', (e) => {
+        e.preventDefault();
+        target.classList.remove('hovered');
+        
+        const profession = e.dataTransfer.getData('text/plain');
+        const targetType = target.getAttribute('data-target');
+
+        if (profession === targetType && !target.classList.contains('matched')) {
+            const draggedItem = document.querySelector(`.drag-item[data-match="${profession}"]`);
+            
+            // Replace the drop target content with the text from the dragged item
+            target.innerHTML = `✅ ${draggedItem.querySelector('.drag-item-image').textContent}`;
+            target.classList.add('matched');
+            
+            // Hide the dragged item (better than display: none for the dragend animation)
+            draggedItem.classList.add('matched'); // Apply the class to hide it with animation
+            
+            matchedCount++;
+            
+            if (matchedCount === totalMatches) {
+                gameMessage.style.display = 'block';
+            }
+        }
+    });
+});
+
+// 4. NASA ACCORDION LOGIC (NASA Section)
+document.querySelectorAll('.accordion-title').forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        
+        document.querySelectorAll('.accordion-content').forEach(otherContent => {
+            if (otherContent !== content && otherContent.classList.contains('active')) {
+                otherContent.classList.remove('active');
+            }
+        });
+        content.classList.toggle('active');
+    });
+});
+
+// 5. MEMORY GAME LOGIC (Protection Section)
+const memoryGame = document.getElementById('memory-game');
+const memoryMessage = document.getElementById('memory-message');
+const memoryCardsData = [
+    { name: 'Scientists', content: 'Scientists' },
+    { name: 'Telescopes', content: 'Telescopes' },
+    { name: 'Satellites', content: 'Satellites' },
+    { name: 'Astronauts', content: 'Astronauts' },
+
+];
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let matchesFound = 0;
+
+function shuffle(array) {
+    let shuffledArray = [...array, ...array].map((item, index) => ({...item, id: index}));
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
 }
-feedbackText.style.display = 'block';
+
+function flipCard() {
+    if (lockBoard) return;
+    const card = this.querySelector('.memory-card');
+
+    if (card.classList.contains('matched') || card.classList.contains('flipped')) return;
+    
+    card.classList.add('flipped');
+    
+    if (!firstCard) {
+        firstCard = card;
+        return;
+    }
+    
+    secondCard = card;
+    checkForMatch();
+}
+
+function checkForMatch() {
+    lockBoard = true;
+    let isMatch = firstCard.getAttribute('data-name') === secondCard.getAttribute('data-name');
+    
+    isMatch ? disableCards() : unflipCards();
+}
+
+function disableCards() {
+    // When there is a match, add the 'matched' class
+    firstCard.classList.add('matched');
+    secondCard.classList.add('matched');
+    
+    // And force the reset of 'flipped' so the 'matched' CSS handles showing the front face
+    firstCard.classList.remove('flipped');
+    secondCard.classList.remove('flipped');
+
+    matchesFound++;
+    if (matchesFound === memoryCardsData.length) {
+        memoryMessage.style.display = 'block';
+    }
+
+    resetBoard();
+}
+
+function unflipCards() {
+    setTimeout(() => {
+        firstCard.classList.remove('flipped');
+        secondCard.classList.remove('flipped');
+        resetBoard();
+    }, 1000);
+}
+
+function resetBoard() {
+    [firstCard, secondCard, lockBoard] = [null, null, false];
+}
+
+function createMemoryBoard() {
+    memoryGame.innerHTML = ''; 
+    const shuffledData = shuffle(memoryCardsData); 
+    shuffledData.forEach((item) => {
+        const container = document.createElement('div');
+        container.classList.add('memory-card-container');
+        
+        const card = document.createElement('div');
+        card.classList.add('memory-card');
+        card.setAttribute('data-name', item.name);
+
+        const cardFront = document.createElement('div');
+        cardFront.classList.add('card-face', 'card-front');
+        cardFront.innerHTML = ` ${item.name}`; // Display the item name
+        cardFront.style.fontWeight = '700';
+        cardFront.style.fontSize = '1.1em';
+
+
+        const cardBack = document.createElement('div');
+        cardBack.classList.add('card-face', 'card-back');
+        cardBack.textContent = 'LUMI'; 
+
+        card.appendChild(cardFront);
+        card.appendChild(cardBack);
+        
+        container.appendChild(card);
+        container.addEventListener('click', flipCard);
+        memoryGame.appendChild(container);
+    });
+}
+
+createMemoryBoard();
+
+// 6. STAR RATING LOGIC (Conclusion Section) - Not present in original HTML/JS but keeping structure for completeness
+// const stars = document.querySelectorAll('.star-rating .star');
+// const ratingFeedback = document.getElementById('rating-feedback');
+// ...
+</script>
+</body>
+
+</html>
