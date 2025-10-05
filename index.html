@@ -193,7 +193,65 @@ button:hover {
     margin-top: 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+/* ESTILOS ESPECÍFICOS PARA LA EXPERIENCIA DE MARTIN */
+.martin-experience {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-primary);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 600px; /* Ancho máximo del contenedor */
+    text-align: center;
+    box-shadow: 0 0 15px rgba(206, 30, 255, 0.4);
+}
 
+.martin-experience h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-highlight);
+    text-shadow: 0 0 8px rgba(197, 243, 97, 0.8);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    line-height: 1.3;
+}
+
+/* Contenedor de la imagen: Define el tamaño máximo de la imagen */
+.martin-img-container {
+    width: 90%; 
+    max-width: 450px; /* **TAMAÑO MÁXIMO DE LA IMAGEN EN ESCRITORIO** */
+    margin: 0 auto 20px auto;
+    overflow: hidden;
+}
+
+/* Estilo de la imagen: Asegura que la imagen sea responsive */
+.martin-image {
+    width: 100%; /* La imagen ocupa el 100% del contenedor (máx. 450px) */
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid var(--color-secondary);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.martin-experience p {
+    font-style: italic;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    font-size: 1.05em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Media Query para responsividad en móviles */
+@media (max-width: 768px) {
+    .martin-experience {
+        padding: 15px;
+        margin: 30px 10px;
+        max-width: 95%; /* Ocupa más ancho en móvil */
+    }
+    .martin-experience h3 {
+        font-size: 1.4rem;
+    }
+}
 /* ---------------------------------------------------- */
 /* 5. JUEGOS Nivel PRO */
 /* ---------------------------------------------------- */
@@ -705,9 +763,11 @@ button:hover {
         
         <div class="martin-experience">
             <h3>LA EXPERIENCIA DE MARTIN CON LAS AURORAS</h3>
-            <img src="./Martin.jpg" alt="Martín observando las auroras" class="martin-image">
+              <div class="martin-img-container">
+        <img src="./Martin.jpg" alt="Martín observando las auroras" class="martin-image">
+            </div>
             <p>
-              Viaje hasta el otro lado del planeta a conocer las auroras, al llegar la noche recibimos una notificacion de una App que nos avisaba que habria una escena, yo salté de la emoción, estaba muy nervioso muy feliz yo que soy fotografo agarre mi camara y mi tripode y sali corriendo a ver las auroras, una de las cosas mas lindas que me toco vivir, emoci+on indescriptible, felicidad de haber cumplido algo que siempre soñé, tuve la bendición de poder disfrutar de eso.
+              Viaje hasta el Norte del planeta a conocer las auroras, al llegar la noche recibimos una notificacion de una App que nos avisaba que habria una escena, yo salté de la emoción, estaba muy nervioso muy feliz yo que soy fotografo agarre mi camara y mi tripode y sali corriendo a ver las auroras, una de las cosas mas lindas que me toco vivir, emoci+on indescriptible, felicidad de haber cumplido algo que siempre soñé, tuve la bendición de poder disfrutar de eso.
             </p>
         </div>
         <div class="nav-buttons">
@@ -1003,6 +1063,7 @@ stars.forEach(star => {
 </body>
 
 </html>
+
 
 
 
