@@ -8,7 +8,7 @@
 
 <style>
 /* ---------------------------------------------------- */
-/* 1. VARIABLES AND STYLE RESET */
+/* 1. VARIABLES AND STYLE RESET - KEPT ORIGINAL */
 /* ---------------------------------------------------- */
 :root {
     --color-primary: #ce1eff; /* Bright Purple */
@@ -31,7 +31,7 @@ body {
 }
 
 /* ---------------------------------------------------- */
-/* 2. DYNAMIC BACKGROUND (Space Gradient and Section Backgrounds) */
+/* 2. DYNAMIC BACKGROUND (Space Gradient and Section Backgrounds) - KEPT ORIGINAL */
 /* ---------------------------------------------------- */
 body::before {
     content: '';
@@ -98,7 +98,7 @@ section.active::before {
 }
 
 
-/* SPECIFIC BACKGROUNDS PER SECTION */
+/* SPECIFIC BACKGROUNDS PER SECTION - KEPT ORIGINAL IMAGE PATHS */
 #bienvenida::before { background-image: url('Lumi.png'); background-position: top center; }
 #viaje::before { background-image: url('lumiytierra.png'); }
 #auroras::before { background-image: url('auroras.png'); }
@@ -108,7 +108,7 @@ section.active::before {
 #conclusion::before { background-image: url('Lumi.png'); }
 
 /* ---------------------------------------------------- */
-/* 3. TYPOGRAPHY AND CONTENT STYLES */
+/* 3. TYPOGRAPHY AND CONTENT STYLES - KEPT ORIGINAL */
 /* ---------------------------------------------------- */
 
 h1 {
@@ -159,7 +159,7 @@ em { color: var(--color-highlight); font-style: normal; }
 }
 
 /* ---------------------------------------------------- */
-/* 4. PRO BUTTONS AND NAVIGATION (Cyberpunk Style) */
+/* 4. PRO BUTTONS AND NAVIGATION (Cyberpunk Style) - KEPT ORIGINAL */
 /* ---------------------------------------------------- */
 
 button {
@@ -193,7 +193,7 @@ button:hover {
     margin-top: 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-/* SPECIFIC STYLES FOR MARTIN'S EXPERIENCE */
+/* SPECIFIC STYLES FOR MARTIN'S EXPERIENCE - KEPT ORIGINAL */
 .martin-experience {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid var(--color-primary);
@@ -253,7 +253,7 @@ button:hover {
     }
 }
 /* ---------------------------------------------------- */
-/* 5. PRO Level GAMES */
+/* 5. PRO Level GAMES - KEPT ORIGINAL STYLES */
 /* ---------------------------------------------------- */
 
 /* ** CME GAME (Multiple Choice) - Existing Styles ** */
@@ -358,7 +358,7 @@ button:hover {
     border-radius: 7px; 
 }
 
-/* Specific images for Drag & Drop */
+/* Specific images for Drag & Drop - KEPT ORIGINAL IMAGE PATHS */
 .drag-item[data-match="agricultor"] .drag-item-image { background-image: url('Agricultor.png'); }
 .drag-item[data-match="piloto"] .drag-item-image { background-image: url('piloto.png'); }
 .drag-item[data-match="operador"] .drag-item-image { background-image: url('electrico.png'); }
@@ -396,14 +396,14 @@ button:hover {
     font-style: normal;
 }
 
-/* Container to center the video button */
+/* Container to center the video button - KEPT ORIGINAL */
 .video-button-container {
     text-align: center;
     margin-top: 25px; 
     margin-bottom: 20px; 
 }
 
-/* ** MEMORY GAME (Flip Card Effect) - NEW and improved styles ** */
+/* ** MEMORY GAME (Flip Card Effect) - NEW and improved styles ** - KEPT ORIGINAL */
 .memory-card-container {
     perspective: 1000px;
     height: 100px;
@@ -462,7 +462,7 @@ button:hover {
     border: 3px solid var(--color-highlight);
 }
 
-/* SPECIFIC STYLE FOR MATCHED CARDS (NEW) */
+/* SPECIFIC STYLE FOR MATCHED CARDS (NEW) - KEPT ORIGINAL */
 .memory-card.matched .card-front {
     /* When the pair is found, we force the front to be visible */
     transform: rotateY(0deg);
@@ -491,7 +491,7 @@ button:hover {
 }
 
 /* ---------------------------------------------------- */
-/* 7. MEDIA QUERIES (RESPONSIVE DESIGN) */
+/* 7. MEDIA QUERIES (RESPONSIVE DESIGN) - KEPT ORIGINAL */
 /* ---------------------------------------------------- */
 
 @media (max-width: 768px) {
@@ -824,7 +824,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 
 // =========================================================================
-// GAME LOGIC
+// GAME LOGIC - TRANSLATED MESSAGES ONLY
 // =========================================================================
 
 // 2. MULTIPLE CHOICE GAME LOGIC (CME - Journey Section)
@@ -845,12 +845,12 @@ answerBtns.forEach(button => {
         if (answer === 'correct') {
             e.currentTarget.classList.add('correct-answer');
             feedbackText.style.color = 'var(--color-highlight)';
-            feedbackText.textContent = '✅ Correct Answer! Keep Reading!';
+            feedbackText.textContent = '✅ Correct Answer! Keep Reading!'; // TRANSLATED
             cmeDataCapsule.style.display = 'block'; 
         } else {
             e.currentTarget.classList.add('incorrect-answer');
             feedbackText.style.color = 'var(--color-accent)';
-            feedbackText.textContent = '❌ Incorrect. Read Lumi\'s explanation again to find the answer!';
+            feedbackText.textContent = '❌ Incorrect. Read Lumi\'s explanation again to find the answer!'; // TRANSLATED
         }
         feedbackText.style.display = 'block';
         
@@ -866,7 +866,7 @@ const dropTargets = document.querySelectorAll('.drop-target');
 const gameMessage = document.getElementById('game-message');
 
 let matchesFound = 0;
-const totalMatches = 3; // Farmer, Pilot, Operator
+const totalMatches = 3; // agricultor, piloto, operador
 
 dragItems.forEach(item => {
     item.addEventListener('dragstart', dragStart);
@@ -909,7 +909,7 @@ function drop(e) {
     if (dropTarget && dropTarget.getAttribute('data-target') === draggedMatch) {
         // Match found!
         dropTarget.classList.add('matched');
-        dropTarget.textContent = 'MATCHED!';
+        dropTarget.textContent = 'MATCHED!'; // TRANSLATED
 
         document.querySelector(`.drag-item[data-match="${draggedMatch}"]`).classList.add('matched');
 
@@ -921,20 +921,24 @@ function drop(e) {
 }
 
 
-// 4. MEMORY GAME LOGIC (Protection Section)
+// 4. MEMORY GAME LOGIC (Protection Section) - TRANSLATED CONTENT ONLY
 const memoryGameContainer = document.getElementById('memory-game');
 const memoryMessage = document.getElementById('memory-message');
 
-const cardsArray = [
-    { name: 'protection', content: 'Power Grid Isolation' },
-    { name: 'protection', content: 'Turn off vulnerable equipment' },
-    { name: 'prevention', content: 'Space Weather Forecasting' },
-    { name: 'prevention', content: 'Use of Shielded Satellites' },
-    { name: 'prevention', content: 'Space Weather Forecasting' },
-    { name: 'protection', content: 'Power Grid Isolation' },
-    { name: 'protection', content: 'Turn off vulnerable equipment' },
-    { name: 'prevention', content: 'Use of Shielded Satellites' }
+// TRANSLATED CONTENT FOR MEMORY GAME CARDS
+const uniqueCardsArray = [
+    { name: 'grid', content: 'Power Grid Isolation' },
+    { name: 'equipment', content: 'Turn off vulnerable equipment' },
+    { name: 'forecast', content: 'Space Weather Forecasting' },
+    { name: 'shield', content: 'Use of Shielded Satellites' }
 ];
+
+const gameCards = [...uniqueCardsArray, ...uniqueCardsArray].map((card, index) => ({
+    ...card,
+    id: index,
+    matchId: card.name
+}));
+
 
 let selectedCards = [];
 let matchedPairs = 0;
@@ -943,82 +947,8 @@ function shuffle(array) {
     array.sort(() => 0.5 - Math.random());
 }
 
-function createBoard() {
-    shuffle(cardsArray);
-    cardsArray.forEach((item, index) => {
-        const container = document.createElement('div');
-        container.classList.add('memory-card-container');
-
-        const card = document.createElement('div');
-        card.classList.add('memory-card');
-        card.dataset.name = item.name;
-        card.dataset.id = index;
-        card.addEventListener('click', flipCard);
-
-        const cardBack = document.createElement('div');
-        cardBack.classList.add('card-face', 'card-back');
-        cardBack.textContent = '🛡️ Protection';
-
-        const cardFront = document.createElement('div');
-        cardFront.classList.add('card-face', 'card-front');
-        cardFront.textContent = item.content;
-
-        card.appendChild(cardBack);
-        card.appendChild(cardFront);
-        container.appendChild(card);
-        memoryGameContainer.appendChild(container);
-    });
-}
-
-function flipCard() {
-    // Prevent double-clicking the same card or clicking a matched card
-    if (this.classList.contains('flipped') || this.classList.contains('matched') || selectedCards.length === 2) return;
-
-    this.classList.add('flipped');
-    selectedCards.push(this);
-
-    if (selectedCards.length === 2) {
-        setTimeout(checkForMatch, 1000);
-    }
-}
-
-function checkForMatch() {
-    const [cardOne, cardTwo] = selectedCards;
-
-    if (cardOne.dataset.content === cardTwo.dataset.content || cardOne.dataset.name === cardTwo.dataset.name && cardOne.dataset.id !== cardTwo.dataset.id) {
-        // Success: Match Found!
-        cardOne.classList.add('matched');
-        cardTwo.classList.add('matched');
-        matchedPairs++;
-
-        if (matchedPairs === cardsArray.length / 2) {
-            memoryMessage.style.display = 'block';
-        }
-    } else {
-        // Failure: No match. Flip back.
-        cardOne.classList.remove('flipped');
-        cardTwo.classList.remove('flipped');
-    }
-
-    selectedCards = [];
-}
-
-
-// Logic to initialize the memory game only once when the page is loaded
 if (memoryGameContainer) {
-    // Before creating the board, we need to ensure unique content to be able to match the cards by content or name
-    const uniqueCardsArray = [
-        { name: 'grid', content: 'Power Grid Isolation' },
-        { name: 'equipment', content: 'Turn off vulnerable equipment' },
-        { name: 'forecast', content: 'Space Weather Forecasting' },
-        { name: 'shield', content: 'Use of Shielded Satellites' }
-    ];
-    const gameCards = [...uniqueCardsArray, ...uniqueCardsArray].map((card, index) => ({
-        ...card,
-        id: index,
-        matchId: card.name
-    }));
-
+    
     function createNewBoard() {
         memoryGameContainer.innerHTML = '';
         selectedCards = [];
@@ -1038,11 +968,11 @@ if (memoryGameContainer) {
 
             const cardBack = document.createElement('div');
             cardBack.classList.add('card-face', 'card-back');
-            cardBack.textContent = '🛡️ Protection';
+            cardBack.textContent = '🛡️ Protection'; // TRANSLATED
 
             const cardFront = document.createElement('div');
             cardFront.classList.add('card-face', 'card-front');
-            cardFront.textContent = item.content;
+            cardFront.textContent = item.content; // TRANSLATED CONTENT
 
             card.appendChild(cardBack);
             card.appendChild(cardFront);
