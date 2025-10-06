@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>La visita de Lumi - Cuento Interactivo Pro</title>
+<title>La visita de Lumi - Cuento Interactivo</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -551,84 +551,70 @@ button:hover {
 </head>
 <body>
 
-<nav>
-    <div class="nav-container">
-        <ul>
-            <li><a href="#bienvenida" data-index="0">👋 Lumi</a></li>
-            <li><a href="#viaje" data-index="1">🚀 El Viaje</a></li>
-            <li><a href="#auroras" data-index="2">🌌 Auroras</a></li>
-            <li><a href="#travesuras" data-index="3">⚠️ Travesuras</a></li>
-            <li><a href="#nasa" data-index="4">🔭 NASA</a></li>
-            <li><a href="#cuidado" data-index="5">🛡️ Protección</a></li>
-            <li><a href="#conclusion" data-index="6">✅ Conclusión</a></li>
-        </ul>
-    </div>
-</nav>
-
 <main>
     
     <section id="bienvenida" class="page-section active">
-        <h1>La Visita de Lumi: Una Aventura Solar</h1>
-        <h2>¿Quién soy yo?</h2>
-        <p>Hola, me llamo <strong>Lumi</strong>. Soy una pequeña llama del Sol. A veces salto del Sol en forma de luz y viento y viajo por el espacio. A eso le llamamos <em>clima espacial</em>. Mi energía es tan poderosa que ilumino todo a mi alrededor.</p>
+        <h1>Lumi's Visit: A Solar Adventure</h1>
+        <h2>Who am I?</h2>
+        <p>Hello, my name is <strong>Lumi</strong>.I am a little flame from the Sun. Sometimes I jump off the Sun in the form of light and wind and travel through space. We call that space weather. My energy is so powerful that I light up everything around me..</p>
         
         <div class="interactividad">
-            <h3>⭐ ¡Comencemos la aventura!</h3>
-            <p>Haz clic en el botón para seguir el viaje de Lumi y desbloquear secretos del Sol.</p>
+            <h3>⭐ "Let's start the adventure!"</h3>
+            <p>"Click the button to follow Lumi's journey and unlock secrets of the Sun".</p>
         </div>
         <div class="nav-buttons">
             <span></span>
-            <button onclick="changePage(1)">SIGUIENTE 🚀</button>
+            <button onclick="changePage(1)">NEXT 🚀</button>
         </div>
     </section>
 
     <section id="viaje" class="page-section">
-        <h2>El viaje hacia la Tierra</h2>
-        <p>Un día, me emocioné mucho y salí con más fuerza. Viajé como una ola gigante de partículas y campo magnético: a esto los humanos lo llaman una <strong>eyección de masa coronal (CME)</strong>. Mi viaje a través del vasto espacio es una aventura llena de velocidad y energía.</p>
+        <h2>The Journey to Earth</h2>
+        <p>One day, I got really excited and jumped out with more force. I traveled as a gigantic wave of particles and magnetic field: this is what humans call a coronal mass ejection (CME). My trip across vast space is an adventure full of speed and energy.</p>
         
         <div class="interactividad">
-            <h3>Entonces...¿Qué significa CME?</h3>
-            <p>Lumi te lo explicó: ¿Cómo viaja la ola gigante de partículas que viene del Sol?</p>
+            <h3>So... What does CME mean?</h3>
+            <p>Lumi explained it to you: How does the gigantic wave of particles that comes from the Sun travel?</p>
             <div id="cme-quiz">
                 <div class="option-container" data-answer="incorrect">
-                    <button class="answer-btn">A: Es un rayo de luz lento que viaja al espacio.</button>
+                    <button class="answer-btn">A: It is a slow beam of light traveling into space.</button>
                 </div>
                 <div class="option-container" data-answer="correct">
-                    <button class="answer-btn">B: Es una gran ola de partículas y campo magnético.</button>
+                    <button class="answer-btn">B: It is a large wave of particles and magnetic field.</button>
                 </div>
                 <div class="option-container" data-answer="incorrect">
-                    <button class="answer-btn">C: Es un meteorito de roca que ha sido expulsado del Sol.</button>
+                    <button class="answer-btn">C: It is a rocky meteorite that has been ejected from the Sun.</button>
                 </div>
             </div>
             
             <p id="quiz-feedback" style="text-align: center; font-weight: 700; margin-top: 20px; display: none;"></p>
 
             <div id="data-capsule-cme" class="data-capsule" style="display: none;">
-                💡 Dato Desbloqueado:Una CME (como Lumi) viaja a una velocidad de hasta 3.000 kilómetros por segundo, ¡cruzando la distancia del Sol a la Tierra en solo un par de días!
+                💡 Fact Unlocked: A CME (like Lumi) travels at a speed of up to 3,000 kilometers per second, crossing the distance from the Sun to Earth in just a couple of days!
             </div>
         </div>
         <div class="nav-buttons">
-            <button onclick="changePage(-1)">ANTERIOR 👋</button>
-            <button onclick="changePage(1)">SIGUIENTE 🌌</button>
+            <button onclick="changePage(-1)">BACK 👋</button>
+            <button onclick="changePage(1)">NEXT 🌌</button>
         </div>
     </section>
 
     <section id="auroras" class="page-section">
-        <h2>Auroras y luces danzantes</h2>
-        <p>¡Y entonces, la magia sucede! Al llegar a la Tierra, me encuentro con su escudo invisible: el <em>campo magnético</em>. Cuando mi energía y partículas chocan con la atmósfera, pintan el cielo con luces de colores que bailan. ¡Es un espectáculo asombroso conocido como <strong>auroras</strong>, un gran show de luces en el Polo Norte y el Polo Sur!</p>
+        <h2>Auroras and Dancing Lights</h2>
+        <p>And then, the magic happens! Upon reaching Earth, I encounter its invisible shield: the  <em>magnetic field.</em>. When my energy and particles collide with the atmosphere, they paint the sky with dancing, colorful lights. It's an amazing spectacle known as <strong>auroras</strong>, a grand light show at the North Pole and the South Pole!</p>
         <div class="data-capsule">
-            🌌Dato Extra: Las auroras ocurren a unos 100 a 300 kilómetros de altura, ¡justo donde la atmósfera se encuentra con el espacio!
+            Extra Fact:Auroras occur at about 100 to 300 kilometers in altitude—right where the atmosphere meets space!
         </div>
 
         <div class="nav-buttons">
-            <button onclick="changePage(-1)">ANTERIOR </button>
-            <button onclick="changePage(1)">SIGUIENTE 🚀</button>
+            <button onclick="changePage(-1)">BACK </button>
+            <button onclick="changePage(1)">NEXT 🚀</button>
         </div>
     </section>
 
     <section id="travesuras" class="page-section">
-        <h2>Cuando Lumi hace travesuras</h2>
-        <p>Aunque a muchos les encanta ver mis danzas de luz, a veces mis travesuras tienen consecuencias inesperadas. ¡Mira quiénes pueden sentir mis juegos!</p>
+        <h2>When Lumi Gets Mischievous</h2>
+        <p>While many people love to see my light dances, sometimes my mischief has unexpected consequences. Take a look at who can feel my games!</p>
         
         <div class="impact-grid-and-text">
             
@@ -640,139 +626,138 @@ button:hover {
             </div>
 
             <div class="impact-text-list">
-                <h3>A quiénes afecta Lumi:</h3>
+                <h3>Who Lumi Affects:</h3>
                 <ul>
                     <li>
-                        <strong>Agricultor/a:</strong> Las señales de los satélites, vitales para la maquinaria moderna y los pronósticos precisos, pueden fallar.
+                        <strong>Farmer</strong> Satellite signals, which are vital for modern machinery and accurate forecasts, can fail.
                     </li>
                     <li>
-                        <strong>Piloto/a:</strong> Las comunicaciones por radio pueden volverse borrosas y los sistemas de navegación como el GPS pueden perder su rumbo.
+                        <strong>Pilot:</strong> Radio communications can become fuzzy and navigation systems like GPS can lose their way.
                     </li>
                     <li>
-                        <strong>Operador/a de redes eléctricas:</strong> Mis corrientes pueden ser tan fuertes que dañan los transformadores y, en casos extremos, ¡causar apagones!
+                        <strong>Electric Grid Operator: </strong> My currents can be so strong that they damage transformers and, in extreme cases, even cause blackouts!
                     </li>
                     <li>
-                        <strong>Astronauta:</strong> En la inmensidad del espacio, la radiación que traigo puede ser peligrosa.
+                        <strong>Astronaut:</strong> In the vastness of space, the radiation I bring can be dangerous.
                     </li>
                 </ul>
             </div>
         </div>
 
         <div class="interactividad">
-            <h3>Arrastra una **PROFESIÓN** y suéltala en el **PROBLEMA** que le corresponde. ¡Acaba el desafío para ver un dato histórico!</h3>
+            <h3>Drag a PROFESSION and drop it onto its corresponding PROBLEM. Finish the challenge to see a historical fact!</h3>
             <p>
             <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
                 <div id="column-profesiones">
-                    <h4>PROFESIONES (Arrastra la imagen)</h4>
+                    <h4>PROFESSIONS (Drag the image)</h4>
                     
                     <div class="drag-item" data-match="agricultor">
-                        <div class="drag-item-image">Agricultor</div>
+                        <div class="drag-item-image">Farmer</div>
                     </div>
 
                     <div class="drag-item" data-match="piloto">
-                        <div class="drag-item-image">Piloto</div>
+                        <div class="drag-item-image">Pilot</div>
                     </div>
 
                     <div class="drag-item" data-match="operador">
-                        <div class="drag-item-image">Op. Eléctrico</div>
+                        <div class="drag-item-image">Electric Operator</div>
                     </div>
 
                 </div>
                 
                 <div id="column-problemas">
-                    <h4>PROBLEMAS</h4>
-                    <div class="drop-target" data-target="piloto">Pérdida de señal GPS/radio</div>
-                    <div class="drop-target" data-target="operador">Daño en transformadores y apagones</div>
-                    <div class="drop-target" data-target="agricultor">Fallo en la maquinaria y pronósticos</div>
+                    <h4>PROBLEMS</h4>
+                    <div class="drop-target" data-target="piloto">Loss of GPS/radio signal</div>
+                    <div class="drop-target" data-target="operador">Damage to transformers and blackouts</div>
+                    <div class="drop-target" data-target="agricultor">Machinery and forecast failure</div>
                 </div>
             </div>
             
             <div id="game-message" class="data-capsule" style="display: none; background-color: rgba(255, 105, 180, 0.2); border-left: 5px solid var(--color-accent);">
-                ¡Increíble, has completado la misión!
-                <p>💥Dato Histórico de la NASA: Un equipo de científicos, liderado por Laura Hayes, física solar que divide su tiempo entre el Centro Goddard de la NASA y el Trinity College de Dublín, Irlanda, investigó la conexión entre las erupciones solares y la atmósfera terrestre. Descubrieron pulsos en la capa electrificada de la atmósfera, llamada ionosfera, que reflejaban oscilaciones de rayos X durante una erupción el 24 de julio de 2016. ¡Una verdadera travesura de Lumi!</p>
+                ¡Amazing, you've completed the mission!
+                <p>💥NASA Historical Fact: A team of scientists, led by Laura Hayes, a solar physicist who splits her time between NASA's Goddard Center and Trinity College Dublin, Ireland, investigated the connection between solar flares and Earth's atmosphere. They discovered pulses in the atmosphere's electrified layer, called the ionosphere, that mirrored X-ray oscillations during a flare on July 24, 2016. A true Lumi mischief!</p>
             </div>
 
-            <h3 style="margin-top: 40px;">📹 Conoce el Clima Solar</h3>
-            <p>Haz clic en el botón para ver un video directamente desde la NASA que explica cómo la energía del Sol influye en la Tierra.</p>
+            <h3 style="margin-top: 40px;">📹Learn About Solar Weather</h3>
+            <p>Click the button to watch a video directly from NASA that explains how the Sun's energy influences Earth.</p>
             <div class="video-button-container">
-                <button onclick="window.open('https://svs.gsfc.nasa.gov/12640/', '_blank')" style="margin-top: 10px;">Ver Video de la NASA 🚀</button>
+                <button onclick="window.open('https://svs.gsfc.nasa.gov/12640/', '_blank')" style="margin-top: 10px;">Watch NASA Video 🚀</button>
             </div>
             
         </div>
         <div class="nav-buttons">
-            <button onclick="changePage(-1)">ANTERIOR</button>
-            <button onclick="changePage(1)">SIGUIENTE 🔭</button>
+            <button onclick="changePage(-1)">BACK</button>
+            <button onclick="changePage(1)">NEXT 🔭</button>
         </div>
     </section>
 
     <section id="nasa" class="page-section">
-        <h2>🔭 Ojos en el Sol: Los Guardianes de la NASA</h2>
-        <p>Pero ¡no te asustes! La Tierra tiene guardianes muy inteligentes. Científicos y agencias como la NASA tienen la misión de observar mi hogar. Gracias a satélites avanzados, ellos pueden verme salir del Sol, incluso antes de que me acerque a la Tierra.</p>
-        <p>Esta vigilancia constante les permite avisar a todos con tiempo, haciendo que mis "travesuras" sean solo un hermoso espectáculo de luces.</p>
+        <h2>🔭 Eyes on the Sun: The Guardians of NASA</h2>
+        <p>But don't be scared! Earth has very intelligent guardians. Scientists and agencies like NASA have the mission to observe my home. Thanks to advanced satellites, they can see me leave the Sun, even before I get close to Earth.</p>
+        <p>This constant monitoring allows them to warn everyone in time, making my "mischief" just a beautiful light show.</p>
         
         <div class="interactividad">
-            <h3>Aprende sobre las herramientas de la NASA que ayuda a los cientificos con el Clima Espacial:</h3>
+            <h3>Learn About the NASA Tools That Help Scientists with Space Weather</h3>
             <div class="accordion-container" style="padding: 0;">
                 <div class="accordion-item">
                     <button class="accordion-title">SDO (Solar Dynamics Observatory) 🛰️</button>
                     <div class="accordion-content">
-                        <p>SDO es el ojo de la NASA que mira el Sol 24/7. Envía imágenes y datos que permiten a los científicos ver a Lumi (CME) en el momento exacto en que sale del Sol. Es crucial para las alertas tempranas.</p>
+                        <p>SDO is NASA's eye that watches the Sun 24/7. It sends images and data that allow scientists to see Lumi (CME) at the exact moment it leaves the Sun. It's crucial for early warnings.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-title">Parker Solar Probe 🚀</button>
                     <div class="accordion-content">
-                        <p>Esta es la nave más atrevida. En una misión para "tocar el Sol", la sonda solar Parker de la NASA se convirtió en la primera nave espacial en volar a través de la corona (la atmósfera superior del Sol) en 2021. Su misión es tocar y analizar el viento solar y las CME, dándonos información esencial desde el campo de batalla de Lumi.</p>
+                        <p>This is the most daring spacecraft. On a mission to "touch the Sun," NASA's Parker Solar Probe became the first spacecraft to fly through the corona (the Sun's upper atmosphere) in 2021. Its mission is to touch and analyze the solar wind and CMEs, giving us essential information from Lumi's battlefield.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-title">SOHO (Solar and Heliospheric Observatory) 🔭</button>
                     <div class="accordion-content">
-                        <p>SOHO ha sido nuestro vigía desde 1995. Ubicado en un punto estratégico, vigila el clima espacial. Sin SOHO, no sabríamos gran parte de lo que sucede en el Sol.</p>
+                        <p>SOHO has been our sentinel since 1995. Located at a strategic point, it monitors space weather. Without SOHO, we wouldn't know much of what happens on the Sun.</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="nav-buttons">
-            <button onclick="changePage(-1)">ANTERIOR ⚠️</button>
-            <button onclick="changePage(1)">SIGUIENTE 🛡️</button>
+            <button onclick="changePage(-1)">BACK ⚠️</button>
+            <button onclick="changePage(1)">NEXT 🛡️</button>
         </div>
     </section>
 
     <section id="cuidado" class="page-section">
-        <h2>¿Cómo nos cuidamos?</h2>
-        <p>Los científicos observan al Sol con telescopios avanzados y satélites especiales para avisarnos cuando yo y mis amigas vamos de visita. Así, los aviadores, las compañías eléctricas y las agencias espaciales pueden prepararse, protegiendo sus equipos y, lo más importante, a las personas.</p>
+        <h2>How Do We Protect Ourselves?/h2>
+        <p>Scientists observe the Sun with advanced telescopes and special satellites to notify us when my friends and I are visiting. This way, aviators, power companies, and space agencies can prepare, protecting their equipment and, most importantly, the people.</p>
 
         <div class="interactividad">
-            <h3>🧠 Juego de Memoria: Empareja las cartas</h3>
-            <p>Haz clic para revelar la carta. Encuentra las 4 parejas de protección que usan los humanos.</p>
+            <h3>🧠 Memory Game: Match the Cards</h3>
+            <p>Click to reveal the card. Find the 4 protection pairs that humans use.</p>
             <div id="memory-game">
             </div>
             <p id="memory-message" class="data-capsule" style="display: none; background-color: rgba(255, 105, 180, 0.2); border-left: 5px solid var(--color-accent); margin-top: 20px;">
-                🎉 ¡Memoria Asombrosa! Has ayudado a la humanidad a prepararse contra las travesuras de Lumi.
+                🎉Amazing Memory! You have helped humanity prepare against Lumi's mischief.
             </p>
         </div>
         <div class="nav-buttons">
-            <button onclick="changePage(-1)">ANTERIOR 🔭</button>
-            <button onclick="changePage(1)">SIGUIENTE ✅</button>
+            <button onclick="changePage(-1)">BACK 🔭</button>
+            <button onclick="changePage(1)">NEXT ✅</button>
         </div>
     </section>
     <section id="conclusion" class="page-section">
-        <h2>Lumi aprende a jugar con cuidado</h2>
-        <p>Con el tiempo, comprendí que mi energía era no solo hermosa sino también increíblemente poderosa. Aprendí a viajar con más cuidado, y los humanos, a su vez, aprendieron a protegerse de mis juegos más intensos. Así que, la próxima vez que veas las auroras danzando en el cielo, recuerda que son mi saludo luminoso, la firma de Lumi saludando desde el Sol.</p>
+        <h2>Lumi Learns to Play Carefully</h2>
+        <p>With time, I understood that my energy was not only beautiful but also incredibly powerful. I learned to travel more carefully, and humans, in turn, learned to protect themselves from my more intense games. So, the next time you see the auroras dancing in the sky, remember that they are my luminous greeting, Lumi's signature waving from the Sun.</p>
         
         <div class="martin-experience">
-            <h3>LA EXPERIENCIA DE MARTIN AL VER LAS AURORAS</h3>
+            <h3>MARTIN'S EXPERIENCE SEEING THE AURORAS</h3>
               <div class="martin-img-container">
         <img src="./Martin.jpg" alt="Martín observando las auroras" class="martin-image">
             </div>
             <p>
-              Viaje hasta el Norte del planeta a conocer las auroras, al llegar la noche recibimos una notificacion de una App que nos avisaba que habria una escena, yo salté de la emoción, estaba muy nervioso muy feliz yo que soy fotografo agarre mi camara y mi tripode y sali corriendo a ver las auroras, una de las cosas mas lindas que me toco vivir, emoci+on indescriptible, felicidad de haber cumplido algo que siempre soñé, tuve la bendición de poder disfrutar de eso.
-            </p>
+              I traveled all the way to the North of the planet to see the auroras. When night fell, we received a notification from an App that let us know there would be a display. I jumped up with excitement; I was very nervous and very happy. Since I'm a photographer, I grabbed my camera and my tripod and ran out to see the auroras. It was one of the most beautiful things I've ever experienced—an indescribable emotion, the happiness of having fulfilled something I always dreamed of. I had the blessing of being able to enjoy that.
         </div>
         <div class="nav-buttons">
-            <button onclick="changePage(-1)">ANTERIOR 🛡</button>
-            <button onclick="window.location.href = 'index.html'">FINALIZAR 👋</button>
+            <button onclick="changePage(-1)">BACK </button>
+            <button onclick="window.location.href = 'index.html'">FINISH 👋</button>
         </div>
     </section>
 </main>
@@ -1063,6 +1048,7 @@ stars.forEach(star => {
 </body>
 
 </html>
+
 
 
 
